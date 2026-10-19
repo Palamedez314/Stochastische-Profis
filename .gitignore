@@ -1,4 +1,6 @@
-*.aux
+*.pdf
 *.log
-*.out
+*.aux
 *.synctex.gz
+*.synctex(busy)
+*.out
