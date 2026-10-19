@@ -37,7 +37,22 @@ Dann ist $X_{\bullet}:\Om\rightarrow E^T$ $(\A, \bigotimes_{t\in T}\B)$-messbar
 \subsection*{Beweis}
 \einruecken
 	
-trivial
+per Definition gilt $\bigotimes_{t\in T}\B=\sigma(\mathcal{Z})$ mit $\mathcal{Z}$ die Zylindermengen.\\
+Sei $A \in \mathcal{Z}$. Dann $A=\prod_{t\in T}A_t$ mit $A_t \in \B$ und endlichem $J \subset T$, sodass $A_t=\Omega_t \forall t\in T\setminus J$.\\
+Sei $B_{t,s} :=
+\begin{cases*}
+	A_t & falls t=s \\
+	\Omega & sonst
+\end{cases*}$.\\
+Dann $$X_{\bullet}^{-1}(\prod_{t\in T}B_{t,s})=X_s^{-1}(A_s) \text{ für } s\in T$$
+Wegen $$A=\prod_{t\in T}A_t=\bigcap_{s\in T}\prod_{t\in T}B_{t,s}$$
+gilt also 
+\begin{align*}
+	X_{\bullet}^{-1}(A) &= X_{\bullet}^{-1}(\bigcap_{s\in T}\prod_{t\in T}B_{t,s})\\
+	&= \bigcap_{s\in T} X_{\bullet}^{-1}(\prod_{t\in T}B_{t,s})\\
+	&= \bigcap_{s\in T} X_s^{-1}(A_s)
+\end{align*}
+Also $X_{\bullet}$ messbar, da $X_t$ messbar für alle $t \in T$.
 	
 \ausruecken
 
