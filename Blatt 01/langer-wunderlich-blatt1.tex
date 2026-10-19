@@ -12,10 +12,15 @@
 \newcommand{\einruecken}{\begin{addmargin}[25pt]{0pt}} 
 	%LaTeX mag keine Umlaute :(
 \newcommand{\ausruecken}{\end{addmargin}}
+\newcommand{\R}{\ensuremath{\mathbb{R}}}
 \newcommand{\Om}{\ensuremath{\Omega}}
 \newcommand{\A}{\ensuremath{\mathcal{A}}}
 \newcommand{\B}{\ensuremath{\mathcal{B}}}
 \newcommand{\C}{\ensuremath{\mathcal{C}}}
+\newcommand{\WraumAnn}{\ensuremath{(\Om, \A, P)} ein Wahrscheinlichkeitsraum}
+\newcommand{\MraumAnn}{\ensuremath{(E,\B)} ein Messraum}
+\newcommand{\Xt}{\ensuremath{(X_t)_{t\in T}}}
+\newcommand{\Yt}{\ensuremath{(Y_t)_{t\in T}}}
 
 \begin{document}
 
@@ -23,7 +28,9 @@
 \subsubsection*{Lemma 1.1.3}
 \einruecken
 	
-tbd
+Seien \WraumAnn{} und \MraumAnn{}.\\
+Ferner sei \Xt{} ein stochastischer Prozess.\\
+Dann ist $X_{\bullet}:\Om\rightarrow E^T$ $(\A, \bigotimes_{t\in T}\B)$-messbar
 	
 \ausruecken
 
@@ -38,7 +45,13 @@ trivial
 \subsubsection*{Lemma 1.1.7}
 \einruecken
 
-tbd
+Seien \WraumAnn{} und \MraumAnn{}. Ferner seien $X := \Xt$ und $Y := \Yt$ zwei E-wertige, stochastische Prozesse über $\Omega$. Dann gilt:\\
+
+iii) Für T = [0,1] gilt die Implikation
+\einruecken
+\textit{X Version von Y $\Rightarrow$ X und Y ununterscheidbar}
+\ausruecken
+nicht.
 
 \ausruecken
 
@@ -53,7 +66,7 @@ trivial
 \subsubsection*{Lemma 1.1.9}
 \einruecken
 
-tbd
+Sei \WraumAnn{} und $X := \Xt$ ein stetiger, stochastischer Prozess. Dann gibt es einen von X ununterscheidbaren stochastischen Prozess $Y := \Yt$, für den jeder Pfad stetig ist.
 
 \ausruecken
 
@@ -67,7 +80,8 @@ trivial
 \subsubsection*{Satz 1.1.10}
 \einruecken
 
-tbd
+Seien $X := \Xt$ und $Y := \Yt$ (rechts-/linksseitig) stetige, stochastische Prozesse über einem Wahrscheinlichkeitsraum $(\Om,\A,P)$.\\
+Ist Y eine Version von X, so sind X und Y ununterscheidbar.
 
 \ausruecken
 
@@ -82,7 +96,16 @@ trivial
 \subsubsection*{Satz 1.1.13}
 \einruecken
 
-tbd
+Sei \WraumAnn{} und $X := \Xt$ ein \R-wertiger stochastischer Prozess über $\Omega$.\\
+Dann gelten die folgenden Aussagen:\\
+
+i) Für jedes $n\ge 1$, alle Permutationen $\pi:{1,\dots,n}\rightarrow{1,\dots,n}$ und alle paarweise verschiedenen $t_1,\dots,t_n\in T$ gilt
+$$P_{\pi(t_1,\dots,t_n)}(A) = P_{(t_1,\dots,t_n)}(\pi^{-1}(A)),
+\qquad A\in \B^n.$$
+
+ii) Für alle $n\ge m\ge 1$ und alle paarweise verschiedenen $t_1,\dots,t_n\in T$ gilt
+$$P_{(t_1,\dots,t_m)}(A) = P_{(t_1,\dots,t_n)}(A\times \R^{n-m}),
+\qquad A \in \B^m.$$
 
 \ausruecken
 
@@ -96,7 +119,7 @@ trivial
 \section*{Aufgabe 5}
 \einruecken
 
-Seien $(\Om,\A,P)$ ein Wahrscheinlichkeitsraum und $\B,\C \subset \A$ $\sigma$-Algebren.\\
+Seien \WraumAnn{} und $\B,\C \subset \A$ $\sigma$-Algebren.\\
 Man nehme an, \B{} sei \textit{P-trivial}, i.e. $P(C)\in {0,1}$ für alle $C\in\C$.\\
 Zeigen Sie dass \B{} und \C{} unabhängig sind.
 
