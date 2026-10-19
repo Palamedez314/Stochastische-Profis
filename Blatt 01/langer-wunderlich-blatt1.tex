@@ -7,7 +7,6 @@
 \date{\today}
 \input{../seitendesign.tex}
 
-
 %Abkürzungen
 \newcommand{\einruecken}{\begin{addmargin}[25pt]{0pt}} 
 	%LaTeX mag keine Umlaute :(
@@ -36,12 +35,27 @@ Dann ist $X_{\bullet}:\Om\rightarrow E^T$ $(\A, \bigotimes_{t\in T}\B)$-messbar
 
 \subsection*{Beweis}
 \einruecken
-	
-trivial
+
+Per Definition gilt $\bigotimes_{t\in T}\B=\sigma(\mathcal{Z})$ mit $\mathcal{Z}$ die Zylindermengen.\\
+Sei $A \in \mathcal{Z}$. Dann $A=\prod_{t\in T}A_t$ mit $A_t \in \B$ und endlichem $J \subset T$, sodass $A_t=\Omega_t \forall t\in T\setminus J$.\\
+Sei $B_{t,s} :=
+\begin{cases*}
+	A_t & falls t=s \\
+	\Omega & sonst
+\end{cases*}$.\\
+Dann $$X_{\bullet}^{-1}(\prod_{t\in T}B_{t,s})=X_s^{-1}(A_s) \text{ für } s\in T$$
+Wegen $$A=\prod_{t\in T}A_t=\bigcap_{s\in T}\prod_{t\in T}B_{t,s}$$
+gilt also 
+\begin{align*}
+	X_{\bullet}^{-1}(A) &= X_{\bullet}^{-1}(\bigcap_{s\in T}\prod_{t\in T}B_{t,s})\\
+	&= \bigcap_{s\in T} X_{\bullet}^{-1}(\prod_{t\in T}B_{t,s})\\
+	&= \bigcap_{s\in T} X_s^{-1}(A_s)
+\end{align*}
+Also $X_{\bullet}$ messbar, da $X_t$ messbar für alle $t \in T$.
 	
 \ausruecken
 
-\section*{Aufgabe 1}
+\section*{Aufgabe 2}
 \subsubsection*{Lemma 1.1.7}
 \einruecken
 
@@ -62,7 +76,7 @@ trivial
 
 \ausruecken
 
-\section*{Aufgabe 1}
+\section*{Aufgabe 3}
 \subsubsection*{Lemma 1.1.9}
 \einruecken
 
@@ -92,7 +106,7 @@ trivial
 
 \ausruecken
 
-\section*{Aufgabe 1}
+\section*{Aufgabe 4}
 \subsubsection*{Satz 1.1.13}
 \einruecken
 
@@ -120,15 +134,31 @@ trivial
 \einruecken
 
 Seien \WraumAnn{} und $\B,\C \subset \A$ $\sigma$-Algebren.\\
-Man nehme an, \B{} sei \textit{P-trivial}, i.e. $P(C)\in {0,1}$ für alle $C\in\C$.\\
+Man nehme an, \C{} sei \textit{P-trivial}, i.e. $P(C)\in {0,1}$ für alle $C\in\C$.\\
 Zeigen Sie dass \B{} und \C{} unabhängig sind.
 
-
 \ausruecken
+
 \subsection*{Beweis}
 \einruecken
 
-tbd
+Seien $B \in \B, C \in \C$. Zu zeigen: $P(B\cap C)=P(B)\cdot P(C)$\\
+
+Fall {\boldmath$P(C)=0$:}
+
+$$B\cap C\subset C\text{, also } P(B\cap C)\le P(C)=0=P(B)\cdot P(C)$$\\
+
+Fall {\boldmath$P(C)=1$}:
+\begin{align*}
+	P(B) &\ge P(B\cap C)\\
+	&= 1-P((B\cap C)^c)\\
+	&= 1-P(B^c\cup C^c)\\
+	&\ge 1-(P(B^c)+P(C^c))\\
+	&= P(B)
+\end{align*}
+da $P(C^C)=1-P(C)=0$ und P subadditiv. Also
+$$P(B\cap C)=P(B)=P(B)\cdot P(C)$$
+
 
 \ausruecken
 
