@@ -1,0 +1,293 @@
+% ACHTUNG!
+% Es kann zu Problemen kommen, wenn ihr ein \usepackage zweimal ausführt.
+% Dementsprechend ist der Befehl \RequirePackage sinnvoller, 
+% da das Paket nur geladen wird, wenn es noch nicht geladen wurde.
+%
+%
+\ProvidesPackage{mathe_definition}
+
+% Vorspann für verschiedene Optionen
+% Option exercise speziell für Übungsblätter
+\newif\if@exercise
+\@exercisefalse
+% Option float left equation
+\newif\if@fleqn
+\@fleqnfalse
+% Option zur Einbindung von listings
+\newif\if@listings
+\@listingsfalse
+%
+% Verarbeitung der Optionen
+\DeclareOption{exercise}{\@exercisetrue}
+\DeclareOption{fleqn}{\@fleqntrue}
+\DeclareOption{listings}{\@listingstrue}
+\ProcessOptions\relax
+
+
+
+% Laden der Pakete:
+% Umlaute und so
+\RequirePackage[utf8]{inputenc}
+\RequirePackage[T1]{fontenc}
+% Deutsches Sprachpaket
+\RequirePackage[ngerman]{babel}
+% Für Zeichnungen
+% Für Zeichnungen
+\RequirePackage{rotating,tikz}
+\usetikzlibrary{backgrounds,decorations,arrows.meta,positioning,shapes,arrows,automata,matrix,trees,fit}
+% Plotten mit pgf
+\RequirePackage{pgfplots}
+% Pakete für Mathematik
+\RequirePackage{amsmath, amsfonts, amssymb, amsthm, mathtools, ifthen, mathrsfs}
+% Pakete für den Header/Foot und Seitennummerierung
+\RequirePackage{fancyhdr, lastpage}
+% Grafiken, Farben	
+\RequirePackage{graphicx, xcolor}
+% Mehrere Spalten/Zeilen auf einer Seite
+\RequirePackage{multicol, multirow}
+% Externen Quellcode einbinden
+\if@listings
+%	Das Paket listings wird innerhalb des listings_definitions geladen, 
+%	es muss hier nicht geladen werden.
+	\RequirePackage{listings_definitions}
+\fi
+% Algorithmen
+\RequirePackage[german]{algorithm2e}
+% Macht mit \MyAuthor \MyDate usw. Titelinfos auch nach dem Titel nutzbar
+\RequirePackage{authoraftertitle}
+% Um externe Bilder wie Tikzpicture zu implementieren:
+\RequirePackage{standalone}
+% Links anklickbar machen
+\RequirePackage{hyperref}
+% Festlegen der Geometrie des Blattes
+\RequirePackage{geometry}
+% Definition der eigentlichen Geometrie
+\geometry{a4paper, vscale=0.93, hscale=0.83, includeheadfoot, headheight=5ex, headsep=5ex}
+%
+%
+%
+%			-------------
+% Jeglichen Einschub nach Absätzen vermeiden
+\parindent 0em
+% Einschub in Matheumgebungen ändern (nur bei aktiven fleqn)
+\if@fleqn
+	\mathindent 3mm
+\fi
+% Zähler für Blattnummer
+\newcounter{blnr}
+%
+%
+%
+%			-------------
+% Umgebung für Aufgaben
+\newenvironment{exercise}
+{
+% Ändere die Aufzählungen:
+% Aufzählung 1. Stufe
+\renewcommand{\theenumi}{{\bfseries \arabic{blnr}.\arabic{enumi}}}
+\renewcommand{\labelenumi}{\theenumi\bfseries.}
+% Aufzählung 2. Stufe
+\renewcommand{\theenumii}{{\bfseries \alph{enumii})}}
+\renewcommand{\labelenumii}{\theenumii}
+% Aufzählung 3. Stufe
+\renewcommand{\theenumiii}{{$(\roman{enumiii})$}}
+\renewcommand{\labelenumiii}{\theenumiii}
+% 
+\begin{enumerate}}
+% Nach der Umgebung
+{\end{enumerate}}
+%
+%
+%
+%
+% Definiere den Pagestyle für Aufgabenblätter
+\fancypagestyle{exercisepages}{
+	% Header links
+	\lhead{\MyAuthor\\ \MyMatriculation}
+	% Abkürzung für \fancyhead[L]{...}
+	% \fancyhead[LO]{...} O = odd, E = even
+	%
+	% Header Mitte
+	\chead{\MyModule\\ Blatt \arabic{blnr}}
+	% Header rechts
+	\rhead{\MyDate\\ Seite \thepage{} von \pageref{LastPage}}
+	% Fußzeile
+	% Seitenzahl aus der Fußzeile entfernen
+	\cfoot{}
+}
+%
+%
+% Auswählen des pagestyle
+\if@exercise
+	\pagestyle{exercisepages}
+\else
+	\pagestyle{fancy}
+\fi
+%
+%
+%
+%
+%
+\newcommand{\module}[1]{\newcommand{\MyModule}{#1}}
+\newcommand{\matriculation}[1]{\newcommand{\MyMatriculation}{#1}}
+%
+%
+%
+%			-------------
+% Mengen (Blackboard-font)
+\newcommand{\BbA}{\ensuremath{\mathbb{A}}}
+\newcommand{\BbB}{\ensuremath{\mathbb{B}}}
+\newcommand{\BbC}{\ensuremath{\mathbb{C}}}
+\newcommand{\BbD}{\ensuremath{\mathbb{D}}}
+\newcommand{\BbE}{\ensuremath{\mathbb{E}}}
+\newcommand{\BbF}{\ensuremath{\mathbb{F}}}
+\newcommand{\BbG}{\ensuremath{\mathbb{G}}}
+\newcommand{\BbH}{\ensuremath{\mathbb{H}}}
+\newcommand{\BbI}{\ensuremath{\mathbb{I}}}
+\newcommand{\BbJ}{\ensuremath{\mathbb{J}}}
+\newcommand{\BbK}{\ensuremath{\mathbb{K}}}
+\newcommand{\BbL}{\ensuremath{\mathbb{L}}}
+\newcommand{\BbM}{\ensuremath{\mathbb{M}}}
+\newcommand{\BbN}{\ensuremath{\mathbb{N}}}
+\newcommand{\BbO}{\ensuremath{\mathbb{O}}}
+\newcommand{\BbP}{\ensuremath{\mathbb{P}}}
+\newcommand{\BbQ}{\ensuremath{\mathbb{Q}}}
+\newcommand{\BbR}{\ensuremath{\mathbb{R}}}
+\newcommand{\BbS}{\ensuremath{\mathbb{S}}}
+\newcommand{\BbT}{\ensuremath{\mathbb{T}}}
+\newcommand{\BbU}{\ensuremath{\mathbb{U}}}
+\newcommand{\BbV}{\ensuremath{\mathbb{V}}}
+\newcommand{\BbW}{\ensuremath{\mathbb{W}}}
+\newcommand{\BbX}{\ensuremath{\mathbb{X}}}
+\newcommand{\BbY}{\ensuremath{\mathbb{Y}}}
+\newcommand{\BbZ}{\ensuremath{\mathbb{Z}}}
+%
+% Mengen (Kalligraphischen)
+\newcommand{\calA}{\ensuremath{\mathcal{A}}}
+\newcommand{\calB}{\ensuremath{\mathcal{B}}}
+\newcommand{\calC}{\ensuremath{\mathcal{C}}}
+\newcommand{\calD}{\ensuremath{\mathcal{D}}}
+\newcommand{\calE}{\ensuremath{\mathcal{E}}}
+\newcommand{\calF}{\ensuremath{\mathcal{F}}}
+\newcommand{\calG}{\ensuremath{\mathcal{G}}}
+\newcommand{\calH}{\ensuremath{\mathcal{H}}}
+\newcommand{\calI}{\ensuremath{\mathcal{I}}}
+\newcommand{\calJ}{\ensuremath{\mathcal{J}}}
+\newcommand{\calK}{\ensuremath{\mathcal{K}}}
+\newcommand{\calL}{\ensuremath{\mathcal{L}}}
+\newcommand{\calM}{\ensuremath{\mathcal{M}}}
+\newcommand{\calN}{\ensuremath{\mathcal{N}}}
+\newcommand{\calO}{\ensuremath{\mathcal{O}}}
+\newcommand{\calP}{\ensuremath{\mathcal{P}}}
+\newcommand{\calQ}{\ensuremath{\mathcal{Q}}}
+\newcommand{\calR}{\ensuremath{\mathcal{R}}}
+\newcommand{\calS}{\ensuremath{\mathcal{S}}}
+\newcommand{\calT}{\ensuremath{\mathcal{T}}}
+\newcommand{\calU}{\ensuremath{\mathcal{U}}}
+\newcommand{\calV}{\ensuremath{\mathcal{V}}}
+\newcommand{\calW}{\ensuremath{\mathcal{W}}}
+\newcommand{\calX}{\ensuremath{\mathcal{X}}}
+\newcommand{\calY}{\ensuremath{\mathcal{Y}}}
+\newcommand{\calZ}{\ensuremath{\mathcal{Z}}}
+%
+% Mengen (Skript)
+\newcommand{\scrA}{\ensuremath{\mathscr{A}}}
+\newcommand{\scrB}{\ensuremath{\mathscr{B}}}
+\newcommand{\scrC}{\ensuremath{\mathscr{C}}}
+\newcommand{\scrD}{\ensuremath{\mathscr{D}}}
+\newcommand{\scrE}{\ensuremath{\mathscr{E}}}
+\newcommand{\scrF}{\ensuremath{\mathscr{F}}}
+\newcommand{\scrG}{\ensuremath{\mathscr{G}}}
+\newcommand{\scrH}{\ensuremath{\mathscr{H}}}
+\newcommand{\scrI}{\ensuremath{\mathscr{I}}}
+\newcommand{\scrJ}{\ensuremath{\mathscr{J}}}
+\newcommand{\scrK}{\ensuremath{\mathscr{K}}}
+\newcommand{\scrL}{\ensuremath{\mathscr{L}}}
+\newcommand{\scrM}{\ensuremath{\mathscr{M}}}
+\newcommand{\scrN}{\ensuremath{\mathscr{N}}}
+\newcommand{\scrO}{\ensuremath{\mathscr{O}}}
+\newcommand{\scrP}{\ensuremath{\mathscr{P}}}
+\newcommand{\scrQ}{\ensuremath{\mathscr{Q}}}
+\newcommand{\scrR}{\ensuremath{\mathscr{R}}}
+\newcommand{\scrS}{\ensuremath{\mathscr{S}}}
+\newcommand{\scrT}{\ensuremath{\mathscr{T}}}
+\newcommand{\scrU}{\ensuremath{\mathscr{U}}}
+\newcommand{\scrV}{\ensuremath{\mathscr{V}}}
+\newcommand{\scrW}{\ensuremath{\mathscr{W}}}
+\newcommand{\scrX}{\ensuremath{\mathscr{X}}}
+\newcommand{\scrY}{\ensuremath{\mathscr{Y}}}
+\newcommand{\scrZ}{\ensuremath{\mathscr{Z}}}
+%
+% Pfeile
+% Injektion/Einbettung
+\newcommand{\hooklongrightarrow}{\lhook\joinrel\longrightarrow}
+\newcommand{\hooklongleftarrow}{\longleftarrow\joinrel\rhook}
+% Surjektion
+\newcommand{\twoheadlongrightarrow}{\relbar\joinrel\twoheadrightarrow}
+\newcommand{\twoheadlongleftarrow}{\twoheadleftarrow\joinrel\relbar}
+%
+%
+%
+% (Lineare) Algebra
+\newcommand{\ggT}[1]{\ensuremath{\operatorname{ggT}\!\left(#1\right)}}
+\newcommand{\kgV}[1]{\ensuremath{\operatorname{kgV}\!\left(#1\right)}}
+\newcommand{\sgn}[1]{\ensuremath{\operatorname{sgn}\!\left(#1\right)}}
+\DeclareMathOperator{\Abb}{Abb}
+\DeclareMathOperator{\Bij}{Bij}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\End}{End}
+\DeclareMathOperator{\Aut}{Aut}
+\DeclareMathOperator{\Inn}{Inn}
+\DeclareMathOperator{\id}{id}
+\DeclareMathOperator{\tr}{tr}
+\DeclareMathOperator{\rank}{rank}
+\DeclareMathOperator{\im}{im}
+\DeclareMathOperator{\ord}{ord}
+\DeclareMathOperator{\syl}{Syl}
+\DeclarePairedDelimiter{\dotprod}{\langle}{\rangle}
+\newcommand{\vect}[1]{\ensuremath{\begin{pmatrix}#1\end{pmatrix}}}
+%
+%
+%
+% Analysis
+\DeclarePairedDelimiter{\abs}{\vert}{\vert}
+\DeclarePairedDelimiter{\norm}{\Vert}{\Vert}
+\newcommand{\euler}{\mathrm{e}}
+\newcommand{\imag}{\mathrm{i}}
+\renewcommand{\Re}[1]{\ensuremath{\operatorname{Re}\!\left(#1\right)}}
+\renewcommand{\Im}[1]{\ensuremath{\operatorname{Im}\!\left(#1\right)}}
+\DeclareMathOperator{\arsinh}{arsinh}
+\DeclareMathOperator{\arcosh}{arcosh}
+\DeclareMathOperator{\artanh}{artanh}
+% Ableiten d/dx mit x als Standardargument
+\newcommand{\ddx}[1][x]{\frac{\mathrm{d}}{\mathrm{d} #1}}
+% Integrieren dx mit x als Standardargument
+\newcommand{\dx}[1][x]{\ensuremath{\mathrm{d} #1}}
+% Für spezielle Integranten für Winkel und Wahrscheinlichkeitsmaße:
+\newcommand{\df}{\ensuremath{\,\text{d}\varphi}}
+\newcommand{\dl}{\ensuremath{\,\text{d}\lambda}}
+\newcommand{\dm}{\ensuremath{\,\text{d}\mu}}
+% Reihen
+\newcommand{\series}[2][k]{\ensuremath{\sum_{#1=#2}^\infty}}
+\newcommand{\veps}{\ensuremath{\varepsilon}}
+\newcommand{\nti}[1][n]{\ensuremath{#1\to\infty}}
+\newcommand{\Res}[1]{\ensuremath{\operatorname{Res}\!\left(#1\right)}}
+\renewcommand{\div}{\ensuremath{\operatorname{div}}}
+%
+%
+%
+%
+% Numerik
+\DeclareMathOperator{\cond}{cond}
+% Das * bedeutet, dass das Subscript unter dem Operator steht, und nicht rechts unterhalb
+\DeclareMathOperator*{\argmin}{arg\,min}
+\DeclareMathOperator*{\argmax}{arg\,max}
+%
+%
+% Blattüberschrift
+\newcommand{\blatt}[1]{
+	\setcounter{blnr}{#1}
+	\begin{center}~\\[2ex]
+		{\huge\bfseries \MyModule \; -- Blatt \arabic{blnr}}
+	\end{center}\bigskip\medskip
+}
