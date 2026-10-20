@@ -13,6 +13,7 @@
 \newcommand{\ausruecken}{\end{addmargin}}
 \newcommand{\R}{\ensuremath{\mathbb{R}}}
 \newcommand{\Om}{\ensuremath{\Omega}}
+\newcommand{\om}{\ensuremath{\omega}}
 \newcommand{\A}{\ensuremath{\mathcal{A}}}
 \newcommand{\B}{\ensuremath{\mathcal{B}}}
 \newcommand{\C}{\ensuremath{\mathcal{C}}}
@@ -37,19 +38,19 @@ Dann ist $X_{\bullet}:\Om\rightarrow E^T$ $(\A, \bigotimes_{t\in T}\B)$-messbar
 \einruecken
 
 Per Definition gilt $\bigotimes_{t\in T}\B=\sigma(\mathcal{Z})$ mit $\mathcal{Z}$ die Zylindermengen.\\
-Sei $A \in \mathcal{Z}$. Dann $A=\prod_{t\in T}A_t$ mit $A_t \in \B$ und endlichem $J \subset T$, sodass $A_t=\Omega_t \forall t\in T\setminus J$.\\
-Sei $B_{t,s} :=
+Sei $A \in \mathcal{Z}$. Dann $A=\prod_{t\in T}A_t$ mit $A_t \in \B$ und endlichem $J \subset T$, sodass $A_t=\Om_t \forall t\in T\setminus J$.\\
+Definiere $B_{t,s} :=
 \begin{cases*}
 	A_t, & falls t=s \\
-	\Omega, & sonst
-\end{cases*}$.\\
-Dann $$X_{\bullet}^{-1}(\prod_{t\in T}B_{t,s})=X_s^{-1}(A_s) \text{ für } s\in T$$
+	\Om, & sonst
+\end{cases*}$\\
+sodass $$X_{\bullet}^{-1}(\prod_{t\in T}B_{t,s})=X_s^{-1}(A_s) \text{ für } s\in T.$$
 Wegen $$A=\prod_{t\in T}A_t=\bigcap_{s\in T}\prod_{t\in T}B_{t,s}$$
 gilt also 
 \begin{align*}
 	X_{\bullet}^{-1}(A) &= X_{\bullet}^{-1}(\bigcap_{s\in T}\prod_{t\in T}B_{t,s})\\
 	&= \bigcap_{s\in T} X_{\bullet}^{-1}(\prod_{t\in T}B_{t,s})\\
-	&= \bigcap_{s\in T} X_s^{-1}(A_s)
+	&= \bigcap_{s\in T} X_s^{-1}(A_s).
 \end{align*}
 Also $X_{\bullet}$ messbar, da $X_t$ messbar für alle $t \in T$.
 	
@@ -59,7 +60,7 @@ Also $X_{\bullet}$ messbar, da $X_t$ messbar für alle $t \in T$.
 \subsubsection*{Lemma 1.1.7}
 \einruecken
 
-Seien \WraumAnn{} und \MraumAnn{}. Ferner seien $X := \Xt$ und $Y := \Yt$ zwei E-wertige, stochastische Prozesse über $\Omega$. Dann gilt:\\
+Seien \WraumAnn{} und \MraumAnn{}. Ferner seien $X := \Xt$ und $Y := \Yt$ zwei E-wertige, stochastische Prozesse über $\Om$. Dann gilt:\\
 
 iii) Für T = [0,1] gilt die Implikation
 \einruecken
@@ -73,22 +74,14 @@ nicht.
 \einruecken
 
 Definiere \R-wertige Stochastischen Prozesse $(X_t)_{t\in [0,1]}$ und $(Y_t)_{t\in [0,1]}$ über $([0,1],\B([0,1]),\lambda)$ durch
-%$$X_t(\omega) := 
-%\begin{cases}
-%	0, & \text{falls } t = \omega\\
-%	1, & \text{sonst}
-%\end{cases}
-%\quad \text{für } t,\omega \in [0,1]$$
-%und 
-$X_t:=\textbf{1}_{[0,1]\setminus  \{t\}}$ und $Y_t:=\textbf{1}$ je messbar nach MWT.\\
+$X_t:=\textbf{1}_{[0,1]\setminus\{t\}}$ und $Y_t:=\textbf{1}$ je messbar nach MWT.\\
 Dann gilt für $t\in [0,1]$:
-$$\{\omega \in [0,1]:N_t:=X_t(\omega)\ne Y_t(\omega)\}=\{t\}$$
+$$\{\om \in [0,1]:N_t:=X_t(\om)\ne Y_t(\om)\}=\{t\}$$
 Also $\lambda(N_t^c)=1$ für $t \in [0,1]$ und somit X Version von Y.\\
 Es gilt aber
 $$\bigcup_{t\in [0,1]}N_t=\bigcup_{t\in [0,1]}{t}=[0,1]$$
 und insbesondere nicht in einer Menge mit Maß 0 enthalten.
 Somit X und Y nicht ununterscheidbar.
-
 
 \ausruecken
 
@@ -126,7 +119,7 @@ trivial
 \subsubsection*{Satz 1.1.13}
 \einruecken
 
-Sei \WraumAnn{} und $X := \Xt$ ein \R-wertiger stochastischer Prozess über $\Omega$.\\
+Sei \WraumAnn{} und $X := \Xt$ ein \R-wertiger stochastischer Prozess über $\Om$.\\
 Dann gelten die folgenden Aussagen:\\
 
 i) Für jedes $n\ge 1$, alle Permutationen $\pi:\{1,\dots,n\}\rightarrow\{1,\dots,n\}$ und alle paarweise verschiedenen $t_1,\dots,t_n\in T$ gilt
@@ -142,15 +135,31 @@ $$P_{(t_1,\dots,t_m)}(A) = P_{(t_1,\dots,t_n)}(A\times \R^{n-m}),
 \subsection*{Beweis}
 \einruecken
 
-i) Für $\omega \in \Om$ gilt für $a_{\omega}:=(X_{t_{\pi(n)}}(\omega),\dots,X_{t_{\pi(n)}}(\omega))$:
-%\begin{align}
-$$(\pi^{-1}(a_{\omega}))_i=(a_{\omega})_{\pi^{-1}(i)}=X_{t_i}$$
-Also
-\begin{align}
-%$a_{}$
-\end{align}
-$$=\{\omega\in\Om:a_{\omega}\in A\}=\{\omega\in\Omega:\pi^{-1}(a_{\omega})\in \pi^{-1}(A)\}$$
-%\end{align}
+i) Für $\om \in \Om$ gilt für $a_{\om}:=(X_{t_{\pi(n)}}(\om),\dots,X_{t_{\pi(n)}}(\om))$:
+$$(\pi^{-1}(a_{\om}))_i=(a_{\om})_{\pi^{-1}(i)}=X_{t_i}$$
+also
+\begin{align*}
+a_{\om}\in A&\iff \pi^{-1}(a_{\om})\in \pi^{-1}(A)\\
+&\iff (X_{t_1},\dots,X_{t_n})(\om)\in \pi^{-1}(A).
+\end{align*}
+Insgesamt folgt also
+\begin{align*}
+P_{\pi(t_1,\dots,t_n)}(A)&=P_{(t_{\pi(1)},\dots,t_{\pi(n)})}(A)\\
+&=P((X_{\pi(1)},\dots,X_{\pi(n)})^{-1}(A))\\
+&=P(\{\om\in\Om:a_{\om}\in A\})\\
+&=P(\{\om\in\Om:(X_{t_1},\dots,X_{t_n})(\om)\in \pi^{-1}(A))\\
+&=P((X_{t_1},\dots,X_{t_n})^{-1}(\pi^{-1}(A)))\\
+&=P_{(t_1,\dots,t_n)}(\pi^{-1}(A)).
+\end{align*}\\
+
+ii) Es gilt
+$$(X_{t_1},\dots,X_{t_m})(\om)\in A\iff (X_{t_1},\dots,X_{t_m},\dots,X_{t_n})(\om)\in A\times \R^{n-m}$$
+und somit
+\begin{align*}
+P_{(t_1,\dots,t_m)}(A) &= P((X_{t_1},\dots,X_{t_m})^{-1}(A))\\
+&= P((X_{t_1},\dots,X_{t_n})^{-1}(A\times\R^{n-m}))\\
+&= P_{(t_1,\dots,t_n)}(A\times\R^{n-m}).
+\end{align*}
 	
 \ausruecken
 
@@ -170,7 +179,7 @@ Seien $B \in \B, C \in \C$. Zu zeigen: $P(B\cap C)=P(B)\cdot P(C)$\\
 
 Fall {\boldmath$P(C)=0$:}
 
-$$B\cap C\subset C\text{, also } P(B\cap C)\le P(C)=0=P(B)\cdot P(C)$$\\
+$$B\cap C\subset C\text{, also } P(B\cap C)\le P(C)=0=P(B)\cdot P(C).$$\\
 
 Fall {\boldmath$P(C)=1$}:
 \begin{align*}
@@ -181,7 +190,7 @@ Fall {\boldmath$P(C)=1$}:
 	&= P(B)
 \end{align*}
 da $P(C^C)=1-P(C)=0$ und P subadditiv. Also
-$$P(B\cap C)=P(B)=P(B)\cdot P(C)$$
+$$P(B\cap C)=P(B)=P(B)\cdot P(C).$$
 
 
 \ausruecken
