@@ -20,6 +20,11 @@
 \newcommand{\MraumAnn}{\ensuremath{(E,\B)} ein Messraum}
 \newcommand{\Xt}{\ensuremath{(X_t)_{t\in T}}}
 \newcommand{\Yt}{\ensuremath{(Y_t)_{t\in T}}}
+\newcommand{\Xw}{\ensuremath{X_t(\omega)}}
+\newcommand{\Yw}{\ensuremath{Y_t(\omega)}}
+\newcommand{\Xq}{\ensuremath{X_q(\omega)}}
+\newcommand{\Yq}{\ensuremath{Y_q(\omega)}}
+
 
 \begin{document}
 
@@ -87,8 +92,20 @@ Sei \WraumAnn{} und $X := \Xt$ ein stetiger, stochastischer Prozess. Dann gibt e
 \subsection*{Beweis}
 \einruecken
 
-trivial
-
+Für $X$ existiert eine Nullmenge $N \in \A$ mit $B = \{ \omega \in \Om: X.(\omega) \; unstetig\}$ und $B \subset N$ \\
+Dann definiere für $t \in T$ : \\
+$$ \Yw := \begin{cases}
+	\Xw \quad \text{für} \; \omega \in \Om \setminus N \\
+	0 \hspace{1.28cm} \text{für} \; \omega \in N
+\end{cases}$$
+Also $\forall t\in T: \; \Yw = \Xw * (1 - \mathbf{1}_N(w))$ \\
+Als Produkt messbarer Funktionen nach $\mathbb{R}$ sind dann die $Y_t$ für $\forall t\in T$ messbar.\\ 
+Damit ist $Y := \Yt \mathbb \; \mathbb{R}$-wertiger Stochastischer Prozess über $\Omega$ und per Konstruktion \\
+$\{\omega \in \Omega : Y.(\omega) \; unstetig\} = \emptyset$ . \\
+Also ist $Y$ überall stetig, wie gewünscht. \\
+Außerdem gilt für $\forall t \in T : \{\omega \in \Omega : \Xw \neq \Yw \} \subset N $ \\
+Also ist $P( \{ \omega \in \Om : \Xw \neq \Yw \} = 1 \quad \forall t\in T$  \\
+Also sind $X$ und $Y$ Versionen und nach $Satz 1.1.10$ sind $X$ und $Y$ ununterscheidbar.
 \ausruecken
 
 \subsubsection*{Satz 1.1.10}
@@ -102,7 +119,21 @@ Ist Y eine Version von X, so sind X und Y ununterscheidbar.
 \subsection*{Beweis}
 \einruecken
 
-trivial
+Sei erstmal $T = (a,b)$ mit $a,b \in \mathbb{R}$ und $X$ und $Y$ seien rechtsseitig stetig. Dann ist $$D = T \cap \mathbb{Q}$$
+eine abzählbare, dichte Teilmenge von $T$. \\
+Für $$N_1 = \bigcap_{q \in D}\{\omega \in \Om : \Xq \neq \Yq \}$$
+gilt wegen der Abzählbarkeit von $D$, der Messbarkeit der $X_t$ und $Y_t$ und da $X$ und $Y$ Versionen sind, dass
+$ N_1 \in \A \qquad P(N_1)=0\:$ .\\ 
+\\
+Da sowohl $X$ als auch $Y$ rechtsstetig sind, $$\exists N_2 \in \A : \{\omega \in \Omega: X.(\omega) \: \text{oder} \: Y.(\omega) \: \text{sind} \: unstetig\}  \subset N_2$$
+mit $P(N_2)=0$\\
+\\
+Setze nun $N = N_1 \cap N_2$ mit $P(N)=0$. 
+\\
+Sei $\omega \notin N$ und $t \in T$, dann existiert eine Fole $(q_n)_{n\in \mathbb{N}} \subset D$ mit $$ \forall n \in \mathbb{N} \: q_n > t \quad \text{und} \quad q_n \rightarrow t.$$ 
+\\
+Da $\omega \notin N$ gilt $\forall n \in \mathbb{N} X_{q_n}(\omega) = Y_{q_n}(\omega)$. Aus der Rechtsstetigkeit folgt dann: 
+$$\Xw = \lim_{n \rightarrow \infty} X_{q_n}(w) = \lim_{n \rightarrow \infty} Y_{q_n}(w) = \Yw$$
 
 \ausruecken
 
