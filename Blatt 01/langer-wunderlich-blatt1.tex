@@ -40,8 +40,8 @@ Per Definition gilt $\bigotimes_{t\in T}\B=\sigma(\mathcal{Z})$ mit $\mathcal{Z}
 Sei $A \in \mathcal{Z}$. Dann $A=\prod_{t\in T}A_t$ mit $A_t \in \B$ und endlichem $J \subset T$, sodass $A_t=\Omega_t \forall t\in T\setminus J$.\\
 Sei $B_{t,s} :=
 \begin{cases*}
-	A_t & falls t=s \\
-	\Omega & sonst
+	A_t, & falls t=s \\
+	\Omega, & sonst
 \end{cases*}$.\\
 Dann $$X_{\bullet}^{-1}(\prod_{t\in T}B_{t,s})=X_s^{-1}(A_s) \text{ für } s\in T$$
 Wegen $$A=\prod_{t\in T}A_t=\bigcap_{s\in T}\prod_{t\in T}B_{t,s}$$
@@ -72,7 +72,23 @@ nicht.
 \subsection*{Beweis}
 \einruecken
 
-trivial
+Definiere \R-wertige Stochastischen Prozesse $(X_t)_{t\in [0,1]}$ und $(Y_t)_{t\in [0,1]}$ über $([0,1],\B([0,1]),\lambda)$ durch
+%$$X_t(\omega) := 
+%\begin{cases}
+%	0, & \text{falls } t = \omega\\
+%	1, & \text{sonst}
+%\end{cases}
+%\quad \text{für } t,\omega \in [0,1]$$
+%und 
+$X_t:=\textbf{1}_{[0,1]\setminus  \{t\}}$ und $Y_t:=\textbf{1}$ je messbar nach MWT.\\
+Dann gilt für $t\in [0,1]$:
+$$\{\omega \in [0,1]:N_t:=X_t(\omega)\ne Y_t(\omega)\}=\{t\}$$
+Also $\lambda(N_t^c)=1$ für $t \in [0,1]$ und somit X Version von Y.\\
+Es gilt aber
+$$\bigcup_{t\in [0,1]}N_t=\bigcup_{t\in [0,1]}{t}=[0,1]$$
+und insbesondere nicht in einer Menge mit Maß 0 enthalten.
+Somit X und Y nicht ununterscheidbar.
+
 
 \ausruecken
 
