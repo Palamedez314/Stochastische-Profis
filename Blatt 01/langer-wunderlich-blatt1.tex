@@ -128,23 +128,27 @@ Ist Y eine Version von X, so sind X und Y ununterscheidbar.
 \subsection*{Beweis}
 \einruecken
 
-Sei erstmal $T = (a,b)$ mit $a,b \in \mathbb{R}$ und $X$ und $Y$ seien rechtsseitig stetig. Dann ist $$D = T \cap \mathbb{Q}$$
+Sei erstmal $T = (a,b)$ mit $a,b \in \overline{\mathbb{R}}$ und $X$ und $Y$ seien rechtsseitig stetig. Dann ist $$D = T \cap \mathbb{Q}$$
 eine abzählbare, dichte Teilmenge von $T$. \\
 Für $$N_1 = \bigcap_{q \in D}\{\omega \in \Om : \Xq \neq \Yq \}$$
-gilt wegen der Abzählbarkeit von $D$, der Messbarkeit der $X_t$ und $Y_t$ und da $X$ und $Y$ Versionen sind, dass
+gilt wegen der Abzählbarkeit von $D$ und da $X$ und $Y$ Versionen sind, dass
 $ N_1 \in \A \qquad P(N_1)=0\:$ .\\ 
 \\
 Da sowohl $X$ als auch $Y$ rechtsstetig sind, $$\exists N_2 \in \A : \{\omega \in \Omega: X.(\omega) \: \text{oder} \: Y.(\omega) \: \text{sind} \: unstetig\}  \subset N_2$$
 mit $P(N_2)=0$\\
 \\
-Setze nun $N = N_1 \cap N_2$ mit $P(N)=0$. 
+Setze nun $N = N_1 \cup N_2$ mit $P(N)=0$. 
 \\
 Sei $\omega \notin N$ und $t \in T$, dann existiert eine Fole $(q_n)_{n\in \mathbb{N}} \subset D$ mit $$ \forall n \in \mathbb{N} \: q_n > t \quad \text{und} \quad q_n \rightarrow t.$$ 
 \\
-Da $\omega \notin N$ gilt $\forall n \in \mathbb{N} X_{q_n}(\omega) = Y_{q_n}(\omega)$. Aus der Rechtsstetigkeit folgt dann: 
+Da $\omega \notin N$ gilt $\forall n \in \mathbb{N}: X_{q_n}(\omega) = Y_{q_n}(\omega)$. Aus der Rechtsstetigkeit folgt dann: 
 $$\Xw = \lim_{n \rightarrow \infty} X_{q_n}(w) = \lim_{n \rightarrow \infty} Y_{q_n}(w) = \Yw$$
 \\
-
+Also ist $$\bigcup_{t \in T}\{\om \in \Om: \Xw \neq \Yw\} \subset N$$
+\\
+Und damit sind $X$ und $Y$ ununterscheidbar.
+\\
+Für $T = [a,b)$ mit $a\in \mathbb{R}$ und $b \in \overline{\mathbb{R}}$, setze $N = N_1 \cup N_2 \cup \{a\}$. Für Linksstetigkeit ist Analog. Für Stetigkeit folgt es aus einem der beiden.
 \ausruecken
 
 \section*{Aufgabe 4}
