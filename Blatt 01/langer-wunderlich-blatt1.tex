@@ -129,7 +129,7 @@ trivial
 Sei \WraumAnn{} und $X := \Xt$ ein \R-wertiger stochastischer Prozess über $\Omega$.\\
 Dann gelten die folgenden Aussagen:\\
 
-i) Für jedes $n\ge 1$, alle Permutationen $\pi:{1,\dots,n}\rightarrow{1,\dots,n}$ und alle paarweise verschiedenen $t_1,\dots,t_n\in T$ gilt
+i) Für jedes $n\ge 1$, alle Permutationen $\pi:\{1,\dots,n\}\rightarrow\{1,\dots,n\}$ und alle paarweise verschiedenen $t_1,\dots,t_n\in T$ gilt
 $$P_{\pi(t_1,\dots,t_n)}(A) = P_{(t_1,\dots,t_n)}(\pi^{-1}(A)),
 \qquad A\in \B^n.$$
 
@@ -142,8 +142,16 @@ $$P_{(t_1,\dots,t_m)}(A) = P_{(t_1,\dots,t_n)}(A\times \R^{n-m}),
 \subsection*{Beweis}
 \einruecken
 
-trivial
-
+i) Für $\omega \in \Om$ gilt für $a_{\omega}:=(X_{t_{\pi(n)}}(\omega),\dots,X_{t_{\pi(n)}}(\omega))$:
+%\begin{align}
+$$(\pi^{-1}(a_{\omega}))_i=(a_{\omega})_{\pi^{-1}(i)}=X_{t_i}$$
+Also
+\begin{align}
+%$a_{}$
+\end{align}
+$$=\{\omega\in\Om:a_{\omega}\in A\}=\{\omega\in\Omega:\pi^{-1}(a_{\omega})\in \pi^{-1}(A)\}$$
+%\end{align}
+	
 \ausruecken
 
 \section*{Aufgabe 5}
