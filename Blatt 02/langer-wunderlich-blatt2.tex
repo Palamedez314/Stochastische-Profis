@@ -44,7 +44,7 @@
 
 Sei \WraumAnn{} und $\scriptP\subset\A$ eine höchstens abzählbare Partition von \Om{} und definiere $\B:=\sigma(\scriptP)$.
 %Für $X \in \scriptL_1(P)$ ist dann $\E(X|B)$ explizit berechenbar.
-Bestimmen sie alle Versionen von $E(X|\B)$. %in \textit{Beispiel 1.2.5.}
+Bestimmen sie alle Versionen von $\E(X|\B)$. %in \textit{Beispiel 1.2.5.}
 	
 \ausruecken
 
@@ -67,7 +67,7 @@ Für $B\in\B$ existiert eine streng monoton steigende Folge $(n_k)_{k\ge 1}$ mit
 sowie
 \begin{align*}
 \int_{\Om}\1_B\1_A \diff P 
-&= \int_{\Om}\1_(A\cap B) \diff P \\
+&= \int_{\Om}\1_{A\cap B} \diff P \\
 &= P(A\cap B) \\
 &= \sum_{m\ge 1}\sum_{k\ge 1}P(A_m\cap B_{n_k}) \\
 &= \sum_{k\ge 1}P(A_{n_k}\cap B_{n_k}) \tag{$\ast$} \\
@@ -76,7 +76,8 @@ sowie
 wobei $(\ast)$ und $(\ast\ast)$ wegen $A_n\subset B_n$.
 Also gilt $\int_{\Om}\1_B\E(\1_A|\B) \diff P=\int_{\Om}\1_B\1_A \diff P$
 wie gewünscht.
-	
+Für allgemeine Zufallsvariablen $\Om\rightarrow\R$ lässt sich $\E(\text{--}|\B)$ durch die Linearität und Maßtheoretische Induktion bestimmen.
+
 \ausruecken
 
 \section*{Aufgabe 7}
