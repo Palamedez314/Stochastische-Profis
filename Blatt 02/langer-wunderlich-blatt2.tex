@@ -94,7 +94,46 @@ Bestimmen sie alle Versionen von $\E(X|\B)$. %in \textit{Beispiel 1.2.6.}
 \subsection*{Beweis}
 \einruecken
 
-trivial
+Sei $X\in L^1(P)$. Wir definieren die Funktion
+
+$$g(\omega_1):=\int_{\Omega_2}X(\omega_1,\omega_2)P_2(d\omega_2).$$
+
+und setzten auf der $P_1$-Nullmenge, auf der das Integral nicht endlich ist, $g(\omega_1):=0$. Nach dem Satz von Fubini gilt dann $g\in L^1(P_1)$.
+Wir setzen $Y:=g\circ\pi_1$, also
+
+$$Y(\omega_1,\omega_2)=g(\omega_1).$$
+
+Dieses $Y$ erfüllt dann alle Bedingungen des bedingten Erwartungswertes.\\
+\\
+1. $\B$-Messbarkeit
+Da $g$ $\mathcal A_1$-messbar ist und $\pi_1$ bezüglich $\B$ messbar ist, ist auch $Y=g\circ\pi_1$ $\B$-messbar. Denn für jedes $A\in\mathcal A_1$ gilt
+
+$$ \pi_1^{-1}(A)=A\times\Omega_2\in \B. $$
+
+2. Integralbedingung
+Sei $C\in \B$ beliebig. Dann existieren $A\in\mathcal A_1$ und $D\in\{\emptyset,\Omega_2\}$ mit
+$$
+C=A\times D.
+$$
+Falls $D=\emptyset$, ist $C=\emptyset$, und somit gilt
+$$
+\int_\Om \mathbf 1_CY,dP
+=0
+=\int_\Om \mathbf 1_CX,dP.
+$$
+Falls $D=\Om_2$, ist $C=A\times\Om_2$. Mit dem Satz von Fubini folgt
+
+$$ \begin{aligned}
+\int_\Om \mathbf 1_CYdP &=\int_A\int_{\Om_2}g(\om_1)P_2(d\om_2)P_1(d\om_1)\ \\
+&=\int_A g(\om_1)P_1(d\om_1)\ \\
+&=\int_A\int_{\Om_2}X(\om_1,\om_2)P_2(d\om_2)P_1(d\om_1)\ \\
+&=\int_\Om \mathbf 1_CX,dP. 
+\end{aligned} $$
+
+Damit erfüllt $Y$ die definierenden Eigenschaften des bedingten Erwartungswertes. Also gilt
+
+$$E(X\mid \B)=g\circ\pi_1.$$
+
 
 \ausruecken
 
