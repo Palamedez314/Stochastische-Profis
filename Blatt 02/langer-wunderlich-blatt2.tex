@@ -27,28 +27,41 @@
 \newcommand{\Yq}{\ensuremath{Y_q(\omega)}}
 \newcommand{\E}{\ensuremath{\mathbb{E}}}
 \newcommand{\1}{\ensuremath{\textbf{1}}}
+\newcommand{\LwieLp}{\ensuremath{\mathcal{L}}}
+	% \L gibts anscheinend schon
+\newcommand{\scriptL}{\ensuremath{\mathcal{L}}}
+\newcommand{\Pot}{\ensuremath{\mathcal{P}}}
+
 
 
 \begin{document}
 
 \section*{Aufgabe 6}
+\subsection*{Beispiel 1.2.5}
 \einruecken
-	
-Bestimmen sie alle Versionen von $\mathbb{E}(X|\B)$ in \textit{Beispiel 1.2.5.}
+
+Sei \WraumAnn und $\Pot\subset\A$ eine höchstens abzählbare Partition von \Om{} und definiere $\B:=\sigma(\Pot)$.
+%Für $X \in \scriptL_1(P)$ ist dann $\E(X|B)$ explizit berechenbar.
+Bestimmen sie alle Versionen von $E(X|\B)$. %in \textit{Beispiel 1.2.5.}
 	
 \ausruecken
 
-\subsection*{Beweis}
+\subsection*{Lösung}
 \einruecken
 
-trivial
+Sei $A\in\A$. Dann gilt mit $A_i:=B$ Definiere $\E(\1_A|\B):=$
 	
 \ausruecken
 
 \section*{Aufgabe 7}
+\subsection*{Beispiel 1.2.6}
 \einruecken
 
-Bestimmen sie alle Versionen von $\mathbb{E}(X|\B)$ in \textit{Beispiel 1.2.6.}
+Seien $(\Om_1, \A_1, P_1)$ und $(\Om_1, \A_2, P_2)$ zwei Wahrscheinlichkeitsräume. Wir setzen $\Om := \Om_1 \times \Om_2$, $\A := \A_1\otimes\A_2$ und $P := P_1 \otimes P_2$
+und betrachten
+$$\B := \A_1\otimes\{\emptyset,\Om_2\}=\sigma(\pi_1).$$
+%Für $X \in \scriptL_1(P)$ ist dann $\E(X|B)$ explizit berechenbar.
+Bestimmen sie alle Versionen von $\E(X|\B)$. %in \textit{Beispiel 1.2.6.}
 
 \ausruecken
 
@@ -60,9 +73,13 @@ trivial
 \ausruecken
 
 \section*{Aufgabe 8}
+\subsection*{Beispiel 1.2.7}
 \einruecken
 
-Bestimmen sie alle Versionen von $\mathbb{E}(X|\B)$ in \textit{Beispiel 1.2.7.}
+Seien $(\Om_1, \A_1, \mu_1)$ und $(\Om_1, \A_2, \mu_2)$ zwei $\sigma$-endliche Maßräume und P ein $\mu_1\otimes\mu_2$-absolut stetiges Wahrscheinlichkeitsmaß auf $\A := \A_1\otimes\A_2$. Wir betrachten wieder
+$$\B := \A_1\otimes\{\emptyset,\Om_2\}=\sigma(\pi_1).$$
+%Für $X \in \scriptL_1(P)$ ist dann $\E(X|B)$ explizit berechenbar.
+Bestimmen sie alle Versionen von $\E(X|\B)$. %in \textit{Beispiel 1.2.7.}
 
 \ausruecken
 
@@ -76,8 +93,8 @@ trivial
 \section*{Aufgabe 9}
 \einruecken
 
-Sei \WraumAnn{} und $\B \subset \A$ eine $\sigma$-Algebra. For $A\in \A$ schreiben wir $P(A|\B) := \mathbb{E}(\textbf{1}_A|\B)$. Zeigen Sie die folgende Variante des Satzes von Bayes:
-$$P(B|A)\cdot\mathbb{E}(P(A|\B))=\mathbb{E}(\textbf{1}_B P(A|\B)),\qquad A\in\A,B\in\B.$$
+Sei \WraumAnn{} und $\B \subset \A$ eine $\sigma$-Algebra. For $A\in \A$ schreiben wir $P(A|\B) := \E(\1_A|\B)$. Zeigen Sie die folgende Variante des Satzes von Bayes:
+$$P(B|A)\cdot\E(P(A|\B))=\E(\1_B P(A|\B)),\qquad A\in\A,B\in\B.$$
 
 \ausruecken
 
