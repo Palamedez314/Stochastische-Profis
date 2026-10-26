@@ -25,6 +25,8 @@
 \newcommand{\Yw}{\ensuremath{Y_t(\omega)}}
 \newcommand{\Xq}{\ensuremath{X_q(\omega)}}
 \newcommand{\Yq}{\ensuremath{Y_q(\omega)}}
+\newcommand{\E}{\ensuremath{\mathbb{E}}}
+\newcommand{\1}{\ensuremath{\textbf{1}}}
 
 
 \begin{document}
@@ -32,7 +34,7 @@
 \section*{Aufgabe 6}
 \einruecken
 	
-Bestimmen sie alle Versionen von $\mathbb{E}(X|\B)$ in \textit{Beispiel 1.3.5.}
+Bestimmen sie alle Versionen von $\mathbb{E}(X|\B)$ in \textit{Beispiel 1.2.5.}
 	
 \ausruecken
 
@@ -46,7 +48,7 @@ trivial
 \section*{Aufgabe 7}
 \einruecken
 
-Bestimmen sie alle Versionen von $\mathbb{E}(X|\B)$ in \textit{Beispiel 1.3.6.}
+Bestimmen sie alle Versionen von $\mathbb{E}(X|\B)$ in \textit{Beispiel 1.2.6.}
 
 \ausruecken
 
@@ -60,7 +62,7 @@ trivial
 \section*{Aufgabe 8}
 \einruecken
 
-Bestimmen sie alle Versionen von $\mathbb{E}(X|\B)$ in \textit{Beispiel 1.3.7.}
+Bestimmen sie alle Versionen von $\mathbb{E}(X|\B)$ in \textit{Beispiel 1.2.7.}
 
 \ausruecken
 
@@ -82,7 +84,19 @@ $$P(B|A)\cdot\mathbb{E}(P(A|\B))=\mathbb{E}(\textbf{1}_B P(A|\B)),\qquad A\in\A,
 \subsection*{Beweis}
 \einruecken
 
-trivial
+
+Für $A\in\A$ und $B\in\B$ gilt
+\begin{align*}
+\E(\1_B \E(\1_A|\B))
+&= \int_{\Om}\1_B\E(\1_A|\B)dP \\
+&= \int_{\Om}\1_B\1_AdP \tag{$\ast$} \\
+&= \int_{\Om}\1_{B\cap A}dP \\
+&= P(B\cap A) \\
+&= P(B|A)\cdot P(A) \\
+&= P(B|A)\cdot \E(\1_A) \\
+&= P(B|A)\cdot \E(\E(\1_A|\B)) \tag{$\ast\ast$} 
+\end{align*}
+wobei $(\ast)$ per Definition und $(\ast\ast)$ nach \textit{Satz 1.2.8 i)} gelten.
 
 \ausruecken
 
