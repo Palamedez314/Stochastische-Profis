@@ -30,7 +30,9 @@
 \newcommand{\LwieLp}{\ensuremath{\mathcal{L}}}
 	% \L gibts anscheinend schon
 \newcommand{\scriptL}{\ensuremath{\mathcal{L}}}
-\newcommand{\Pot}{\ensuremath{\mathcal{P}}}
+\newcommand{\scriptP}{\ensuremath{\mathcal{P}}}
+\newcommand*\diff{\mathop{}\!\mathrm{d}}
+
 
 
 
@@ -40,7 +42,7 @@
 \subsection*{Beispiel 1.2.5}
 \einruecken
 
-Sei \WraumAnn und $\Pot\subset\A$ eine höchstens abzählbare Partition von \Om{} und definiere $\B:=\sigma(\Pot)$.
+Sei \WraumAnn{} und $\scriptP\subset\A$ eine höchstens abzählbare Partition von \Om{} und definiere $\B:=\sigma(\scriptP)$.
 %Für $X \in \scriptL_1(P)$ ist dann $\E(X|B)$ explizit berechenbar.
 Bestimmen sie alle Versionen von $E(X|\B)$. %in \textit{Beispiel 1.2.5.}
 	
@@ -49,7 +51,31 @@ Bestimmen sie alle Versionen von $E(X|\B)$. %in \textit{Beispiel 1.2.5.}
 \subsection*{Lösung}
 \einruecken
 
-Sei $A\in\A$. Dann gilt mit $A_i:=B$ Definiere $\E(\1_A|\B):=$
+Für $B\in\B$ gilt $\Om=\dot\bigcup_{n\ge1}B_n$ mit $B_n\in\scriptP$, da \scriptP{} Partition.
+Sei nun $A\in\A$ und betrachte die Zerlegung $A=\dot\bigcup_{n\ge1}A_n$ durch $A_n:=B_n\cap A\in\A.$
+Definiere nun für $\omega\in\Om$ mit $\omega\in B_n$:
+$$\E(\1_A|\B)(\omega):=\frac{P(A_n)}{P(B_n)}=P(A_n|B_n)$$
+was eine $\B$-messbare Abbildung liefert wegen $B_n\in\B$.
+Für $B\in\B$ existiert eine streng monoton steigende Folge $(n_k)_{k\ge 1}$ mit $B=\bigcup_{k\ge 1}B_{n_k}$. Also gilt:
+\begin{align*}
+\int_{\Om}\1_B\E(\1_A|\B) \diff P
+&= \sum_{k\ge 1}\int_{\Om}\1_{B_{n_k}}\E(\1_A|\B) \diff P \\
+&= \sum_{k\ge 1}\frac{P(A_{n_k})}{P(B_{n_k})}\int_{\Om}\1_{B_{n_k}} \diff P \\
+&= \sum_{k\ge 1}\frac{P(A_{n_k})}{P(B_{n_k})}\cdot P(B_{n_k}) \\
+&= \sum_{k\ge 1}P(A_{n_k})
+\end{align*}
+sowie
+\begin{align*}
+\int_{\Om}\1_B\1_A \diff P 
+&= \int_{\Om}\1_(A\cap B) \diff P \\
+&= P(A\cap B) \\
+&= \sum_{m\ge 1}\sum_{k\ge 1}P(A_m\cap B_{n_k}) \\
+&= \sum_{k\ge 1}P(A_{n_k}\cap B_{n_k}) \tag{$\ast$} \\
+&= \sum_{k\ge 1}P(A_{n_k}) \tag{$\ast\ast$}
+\end{align*}
+wobei $(\ast)$ und $(\ast\ast)$ wegen $A_n\subset B_n$.
+Also gilt $\int_{\Om}\1_B\E(\1_A|\B) \diff P=\int_{\Om}\1_B\1_A \diff P$
+wie gewünscht.
 	
 \ausruecken
 
@@ -105,9 +131,9 @@ $$P(B|A)\cdot\E(P(A|\B))=\E(\1_B P(A|\B)),\qquad A\in\A,B\in\B.$$
 Für $A\in\A$ und $B\in\B$ gilt
 \begin{align*}
 \E(\1_B \E(\1_A|\B))
-&= \int_{\Om}\1_B\E(\1_A|\B)dP \\
-&= \int_{\Om}\1_B\1_AdP \tag{$\ast$} \\
-&= \int_{\Om}\1_{B\cap A}dP \\
+&= \int_{\Om}\1_B\E(\1_A|\B)\diff P \\
+&= \int_{\Om}\1_B\1_A\diff P \tag{$\ast$} \\
+&= \int_{\Om}\1_{B\cap A}\diff P \\
 &= P(B\cap A) \\
 &= P(B|A)\cdot P(A) \\
 &= P(B|A)\cdot \E(\1_A) \\
