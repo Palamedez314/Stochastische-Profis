@@ -8,33 +8,7 @@
 \input{../seitendesign.tex}
 
 %Abkürzungen
-\newcommand{\einruecken}{\begin{addmargin}[25pt]{0pt}} 
-	%LaTeX mag keine Umlaute :(
-\newcommand{\ausruecken}{\end{addmargin}}
-\newcommand{\R}{\ensuremath{\mathbb{R}}}
-\newcommand{\Om}{\ensuremath{\Omega}}
-\newcommand{\om}{\ensuremath{\omega}}
-\newcommand{\A}{\ensuremath{\mathcal{A}}}
-\newcommand{\B}{\ensuremath{\mathcal{B}}}
-\newcommand{\C}{\ensuremath{\mathcal{C}}}
-\newcommand{\WraumAnn}{\ensuremath{(\Om, \A, P)} ein Wahrscheinlichkeitsraum}
-\newcommand{\MraumAnn}{\ensuremath{(E,\B)} ein Messraum}
-\newcommand{\Xt}{\ensuremath{(X_t)_{t\in T}}}
-\newcommand{\Yt}{\ensuremath{(Y_t)_{t\in T}}}
-\newcommand{\Xw}{\ensuremath{X_t(\omega)}}
-\newcommand{\Yw}{\ensuremath{Y_t(\omega)}}
-\newcommand{\Xq}{\ensuremath{X_q(\omega)}}
-\newcommand{\Yq}{\ensuremath{Y_q(\omega)}}
-\newcommand{\E}{\ensuremath{\mathbb{E}}}
-\newcommand{\1}{\ensuremath{\textbf{1}}}
-\newcommand{\LwieLp}{\ensuremath{\mathcal{L}}}
-	% \L gibts anscheinend schon
-\newcommand{\scriptL}{\ensuremath{\mathcal{L}}}
-\newcommand{\scriptP}{\ensuremath{\mathcal{P}}}
-\newcommand*\diff{\mathop{}\!\mathrm{d}}
-
-
-
+\input{../abkürzungen.tex}
 
 \begin{document}
 
@@ -97,7 +71,7 @@ Bestimmen sie alle Versionen von $\E(X|\B)$. %in \textit{Beispiel 1.2.6.}
 
 Sei $X\in L^1(P)$. Wir definieren die Funktion
 
-$$g(\omega_1):=\int_{\Omega_2}X(\omega_1,\omega_2)P_2(d\omega_2).$$
+$$g(\omega_1):=\int_{\Omega_2}X(\omega_1,\omega_2)P_2(\diff \om_2).$$
 
 und setzten auf der $P_1$-Nullmenge, auf der das Integral nicht endlich ist, $g(\omega_1):=0$. Nach dem Satz von Fubini gilt dann $g\in L^1(P_1)$.
 Wir setzen $Y:=g\circ\pi_1$, also
@@ -118,17 +92,17 @@ C=A\times D.
 $$
 Falls $D=\emptyset$, ist $C=\emptyset$, und somit gilt
 $$
-\int_\Om \mathbf 1_CY,dP
+\int_\Om \mathbf 1_CY,\diff P
 =0
-=\int_\Om \mathbf 1_CX,dP.
+=\int_\Om \mathbf 1_CX,\diff P.
 $$
 Falls $D=\Om_2$, ist $C=A\times\Om_2$. Mit dem Satz von Fubini folgt
 
 $$ \begin{aligned}
-\int_\Om \mathbf 1_CYdP &=\int_A\int_{\Om_2}Y(\om_1,\om_2)P_2(d\om_2)P_1(d\om_1)\ \\
-&=\int_A g(\om_1)P_1(d\om_1)\ \\
-&=\int_A\int_{\Om_2}X(\om_1,\om_2)P_2(d\om_2)P_1(d\om_1)\ \\
-&=\int_\Om \mathbf 1_CX,dP. 
+\int_\Om \mathbf 1_CY\diff P &=\int_A\int_{\Om_2}Y(\om_1,\om_2)P_2(\diff \om_2)P_1(\diff \om_1)\ \\
+&=\int_A g(\om_1)P_1(\diff \om_1)\ \\
+&=\int_A\int_{\Om_2}X(\om_1,\om_2)P_2(\diff \om_2)P_1(\diff \om_1)\ \\
+&=\int_\Om \mathbf 1_CX,\diff P. 
 \end{aligned} $$
 
 Damit erfüllt $Y$ die definierenden Eigenschaften des bedingten Erwartungswertes. Also gilt
