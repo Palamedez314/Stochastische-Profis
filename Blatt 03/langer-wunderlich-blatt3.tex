@@ -1,0 +1,93 @@
+\documentclass[12pt]{scrartcl}
+
+%Matthis Vorlage
+\usepackage{../mathe_definition}
+\usepackage[shortlabels]{enumitem}
+
+%Ausgelagerter Code fürs schöne seitenlayout
+\date{\today}
+\input{../seitendesign.tex}
+
+%Abkürzungen
+\newcommand{\einruecken}{\begin{addmargin}[25pt]{0pt}} 
+	%LaTeX mag keine Umlaute :(
+	\newcommand{\ausruecken}{\end{addmargin}}
+\newcommand{\R}{\ensuremath{\mathbb{R}}}
+\newcommand{\Om}{\ensuremath{\Omega}}
+\newcommand{\om}{\ensuremath{\omega}}
+\newcommand{\A}{\ensuremath{\mathcal{A}}}
+\newcommand{\B}{\ensuremath{\mathcal{B}}}
+\newcommand{\C}{\ensuremath{\mathcal{C}}}
+\newcommand{\WraumAnn}{\ensuremath{(\Om, \A, P)} ein Wahrscheinlichkeitsraum}
+\newcommand{\MraumAnn}{\ensuremath{(E,\B)} ein Messraum}
+\newcommand{\Xt}{\ensuremath{(X_t)_{t\in T}}}
+\newcommand{\Yt}{\ensuremath{(Y_t)_{t\in T}}}
+\newcommand{\Xw}{\ensuremath{X_t(\omega)}}
+\newcommand{\Yw}{\ensuremath{Y_t(\omega)}}
+\newcommand{\Xq}{\ensuremath{X_q(\omega)}}
+\newcommand{\Yq}{\ensuremath{Y_q(\omega)}}
+\newcommand{\E}{\ensuremath{\mathbb{E}}}
+\newcommand{\1}{\ensuremath{\textbf{1}}}
+\newcommand{\LwieLp}{\ensuremath{\mathcal{L}}}
+% \L gibts anscheinend schon
+\newcommand{\scriptL}{\ensuremath{\mathcal{L}}}
+\newcommand{\scriptP}{\ensuremath{\mathcal{P}}}
+\newcommand*\diff{\mathop{}\!\mathrm{d}}
+
+\newcommand{\F}{\ensuremath{\mathcal{F}}}
+
+\begin{document}
+	
+\section*{Aufgabe 10}
+%\subsection*{Satz x.y.z}
+\einruecken
+
+Sei \WraumAnn{}, $\F=(\F_n)_{n\ge 0}$ eine Filtration und $X=(X_n)_{n\ge 0}$ ein an \F{} adaptierter Stochastischer Prozess mit $X_n\in\scriptL_1(P)$ für alle $n\ge 0$.
+
+\ausruecken
+
+\subsection*{Beweis}
+\einruecken
+
+trivial
+
+\ausruecken
+
+\section*{Aufgabe 11}
+%\subsection*{Satz x.y.z}
+\einruecken
+
+Sei $(M_n)_{n\ge 0}$ ein $(\F_n)_{n\ge 0}$-Martingal mit $M_0=0$ für das es Konstanten $c_n\ge 0$ gibt, so dass $|M_n-M_{n-1}|\le c_n$ fast sicher für alle $n\ge 1$ gilt. Zeige
+$$P(|M_n|\ge\lambda)\le 2\exp \left(-\frac{\lambda^2}{2\sum_{i=1}^n c_i^2}\right),\quad \lambda\ge 0, n\ge 1.$$
+Anleitung:\\
+
+$i)$ Betrachte $D_n:=M_n-M_{n-1}$ für $n\ge 1$. Benutze die Konvexität der Exponentialfunktion und die Taylorreihenentwicklung von $\cosh(\lambda c_n)$, um für $t>0$ zu zeigen:
+$$\E(e^{tD_n}|\F_{n-1})\le\exp(t^2\sum_{i=1}^n c_n^2/2).$$
+$ii)$ Verwende die Ungleichung aus $i)$, um für $t>0$ induktiv zu zeigen:
+$$\E\left(\exp\left(t\sum_{i=1}^n D_i\right)\right)\le\exp\left(t^2\sum_{i=1}^n c_n^2/2\right).$$
+
+\ausruecken
+
+\subsection*{Beweis}
+\einruecken
+
+trivial
+
+\ausruecken
+
+\section*{Aufgabe 12}
+%\subsection*{Satz x.y.z}
+\einruecken
+
+
+
+\ausruecken
+
+\subsection*{Beweis}
+\einruecken
+
+trivial
+
+\ausruecken
+	
+\end{document}
