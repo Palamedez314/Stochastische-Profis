@@ -76,11 +76,31 @@ gegeben.
 \item Zeige $\lim_{n\rightarrow\infty}G_n=1$ fast sicher.
 \end{enumerate}
 
-\subsubsection*{Beweis}
+\subsubsection*{Lösung}
 \einruecken
 
-trivial
+%TODO Def X_0
+abc
+\begin{enumerate}[$i)$,wide]
+\item Sei $\F:=\F^D$. Da $H_n=2^{n-1}\1_U$ mit $U=\bigcap_{k=1}^{n-1}D_k^{-1}(\{-1\})\in\F_{n-1}$, ist $H$ $\F$-vorhersagbar. Sei nun der stochastische Prozess $X=(X_n)_{n\ge 0}$ definiert durch $X_0:=0, X_n:=\sum_{k=1}^n D_k$. Dann ist $X_n$ $\F_n$-messbar als Summe $\F_n$-messbarer Abbildungen, also $X$ $\F$-adaptiert.
+Weiter gilt 
+\begin{align*}
+	\E(X_n-X_{n-1}|\F_{n-1}) &= \E(D_n|\F_{n-1})\\
+	&= \E(D_n) = 0
+\end{align*}
+da $D_n$ unabhängig von $\F_{n-1}=\sigma(D_1,\dots,D_{n-1})$.
+Somit ist $X$ Martingal bezüglich $\F$ mit
+$$G_n=\sum_{i=1}^n H_iD_i=\sum_{i=1}^n H_i\cdot(X_i-X_{i-1})=(H.X)_{n}.$$
 
+\item Beweis per Induktion:\\
+Es gilt $H_1=1$, also
+$$\E(G_1)=\E(D_1)=0.$$
+Sei nun $1\le n<1$ mit $\E(G_n)=0$. Dann gilt
+$$\E(G_{n+1})=\E(\E(G_{n+1}|\F_{n}))=\E(G_n)=0,$$
+wobei der vorletzte Schritt daraus folgt, dass $G$ nach $i)$ ein Martingal ist. 
+
+\item TODO
+\end{enumerate}
 \ausruecken
 
 \end{document}
