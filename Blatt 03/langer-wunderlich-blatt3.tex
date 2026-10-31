@@ -20,11 +20,27 @@
 \subsection*{Aufgabe 10.}
 
 Sei \WraumAnn{}, $\F=(\F_n)_{n\ge 0}$ eine Filtration und $X=(X_n)_{n\ge 0}$ ein an \F{} adaptierter Stochastischer Prozess mit $X_n\in\scriptL_1(P)$ für alle $n\ge 0$.
+\bigskip
 
-\subsubsection*{Beweis}
+Zeigen Sie: Wenn $H.X$ ein $\F$-Martingal für alle $\F$-vorhersagbaren Prozesse $H=(H_n)_{n\ge 1}$ mit $H_n\in\scriptL_{\infty}(P)$ für alle $n\ge 1$, dann ist $X$ auch ein $\F$-Martingal.
+\bigskip
+
+Unter welchen Bedingungen ist $X$ ein $\F$-Sub-Martingal?
+
+\subsubsection*{Beweis/Lösung}
 \einruecken
 
-trivial
+Sei X ein $\F$-adaptierter Prozess mit der genannten Eigenschaft. Definiere $H_n:=\1_{\Om}$. Dann $H:=(H_n)_{n\ge 1}$ offensichtlich $\F$-vorhersagbarer Prozess und $H\in\scriptL_{\infty}(P)$.
+Wegen $H.X$ Martingal liefert
+\begin{align*}
+0 &= \E((H.X)_n-(H.X)_{n-1}|\F_{n-1}) \\
+&= \E(H_n\cdot(X_n-X_{n-1})|\F_{n-1}) \\
+&= \E(X_n-X_{n-1}|\F_{n-1}),
+\end{align*}
+dass $X$ auch ein $\F$-Martingal ist.
+\bigskip
+
+TODO: zweiter Teil (Wenn $X.H$ Sub-Mart. gilt das auf jeden Fall auf analoge Weise)
 
 \ausruecken
 \subsection*{Aufgabe 11.}
