@@ -88,7 +88,34 @@ Dann gilt
 wobei $(\ast)$ gilt wegen $((x\mapsto e^{tx})\circ(\sum_{i=1}^n D_i))$ $\F_n$-messbar, $(\ast\ast)$ nach $i)$ und $(\ast\ast\ast)$ nach Annahme.
 Per Induktion folgt also die gewünschte Aussage insbesondere für alle $n\ge 1$.
 
-\item TODO
+\item Wegen $\exp(x)\ge 0$ für alle x ist der Fall $\lambda=0$ trivial. Im Folgenden sei also $\lambda>0$. Da $D_n=M_n-M_{n-1}$ für alle $n\ge 1$, gilt umgekehrt
+$$M_n=\sum_{k=1}^n D_k.$$
+Wir betrachten nun für $t>0$ die monoton wachsende Funktion $h: \R\rightarrow(0,\infty), x\mapsto e^{tx}$. Dann gilt nach Markov und nach $ii)$:
+\begin{align*}
+P(\{M_n\ge \lambda\})
+&\le \frac{\E(h\circ M_n)}{h(\lambda)} \\
+&= \frac{\E(\exp(t\sum_{i=1}^n D_i))}{e^{t\lambda}} \\
+&\le \frac{\exp(t^2\sum_{i=1}^n c_i^2/2)}{e^{t\lambda}} \\
+&= \exp\left(t^2\sum_{i=1}^n c_i^2/2-t\lambda\right).
+\end{align*}
+Da der Fall $c_i=0$ für alle $i\le n$ trivial gilt, können wir für den verbleibenden Fall
+$$t:=\frac{\lambda}{\sum_{i=1}^n c_i^2}>0$$
+definieren und erhalten eingesetzt
+% nicht mehr mit oben aligned aber kp wie man das hinkriegen soll
+\begin{align*}
+P(\{M_n\ge \lambda\})
+&\le \exp\left(\frac{\lambda^2}{2\sum_{i=1}^n c_i^2}-\frac{\lambda^2}{\sum_{i=1}^n c_i^2}\right) \\
+&= \exp\left(-\frac{\lambda^2}{2\sum_{i=1}^n c_i^2}\right).
+\end{align*}
+Da für $(N_n)_{n\ge 0}$ definiert durch $N_n:=-M_n$ auch die Vorraussetzungen der Aufgabenstellung gelten, erhalten wir ebenso 
+$$P(\{-M_n\ge \lambda\}) \le \exp\left(-\frac{\lambda^2}{2\sum_{i=1}^n c_i^2}\right),$$
+also insgesamt
+\begin{align*}
+P(\{|M_n|\ge \lambda\})
+&= P(\{M_n\ge \lambda\})+P(\{-M_n\ge \lambda\}) \\
+&\le 2\exp\left(-\frac{\lambda^2}{2\sum_{i=1}^n c_i^2}\right).
+\end{align*}
+
 \end{enumerate}
 
 \ausruecken
