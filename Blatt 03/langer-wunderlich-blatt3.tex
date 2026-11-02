@@ -60,7 +60,48 @@ $$\E\left(\exp\left(t\sum_{i=1}^n D_i\right)\right)\le\exp\left(t^2\sum_{i=1}^n 
 \einruecken
 
 \begin{enumerate}[$i)$,wide]
-\item TODO
+\item Für $\Dn = M_n - M_{n-1}$ gilt, 
+$$\E(\Dn | \F_{n-1}) = \E(M_n - M_{n-1} | \F_{n-1}) = \E(M_n | \F_{n-1}) - \E(M_{n-1} | \F_{n-1}) =  M_{n-1} - M_{n-1} = 0 $$ 
+und $-c_n \leq \Dn \leq c_n$. \\
+\\
+Da die Exponentialfunktion konvex ist lässt sich eine Sekante konstruieren, sodass \\
+$\forall x \in [-\cn, \cn]:$
+$$ 
+\begin{align}
+	e^{tx} & \leq \en + \frac{\ep - \en}{\cn - (-\cn)} \cdot (x- (-\cn)) \\
+	& = \frac{\cn + x}{2\cn} \cdot \ep + \frac{-\cn - x }{2\cn} \cdot \en + \en\\
+	& = \frac{\cn + x}{2\cn} \cdot \ep + \frac{\cn - x}{2\cn} \cdot \en
+\end{align}
+$$
+gilt.\\
+\\
+Da $\Dn \in [-\cn , \cn]$ gilt die Ungleichung. Also ist $$e^{t\Dn} \leq \frac{\cn + \Dn}{2\cn} \cdot \ep + \frac{\cn - \Dn}{2\cn} \cdot \en $$
+\\
+Wenn wir nun den bedingten Erwartungswert auf beiden Seiten anwenden verändert sich die Ungleichung zu
+$$
+\begin{align}
+	\E (e^{t\Dn} | \F_{n-1}) & \leq \E (\frac{\cn + \Dn}{2\cn} \cdot \ep + \frac{\cn - \Dn}{2\cn} \cdot \en | \F_{n-1}) \\
+	& = \E (\frac{\cn + \Dn}{2\cn} \cdot \ep | \F_{n-1} ) + \E ( \frac{\cn - \Dn}{2\cn} \cdot \en| \F_{n-1} ) \\   
+	& = \frac{\ep}{2\cn} \E (\cn + \Dn | \F_{n-1} ) + \frac{\en}{2\cn} \E ( \cn - \Dn | \F_{n-1} ) \\
+	& = \frac{\ep}{2\cn} \cdot (\E (\cn | \F_{n-1} ) + \E (\Dn | \F_{n-1} )) + \frac{\en}{2\cn} \cdot (\E (\cn | \F_{n-1} ) - \E (\Dn | \F_{n-1} )) \\
+	& = \frac{\ep}{2\cn} \cdot \cn + \frac{\en}{2\cn} \cdot \cn \\
+	& = \cosh(t\cn)
+\end{align}$$
+Dabei haben wir oft die Linearität des bedingten Erwartungswertes ausgenutzt sowie die Tatsache, dass $\E(\Dn | \F_{n-1}) = 0$ gilt.\\
+\\
+Betrachte wir nun die Tayor Entiwckulung des Cosinus Hyperbolikus an der Stelle $x = t\Dn$ 
+$$ \cosh (t\Dn ) = \sum_{k=0}^{\infty} \frac{(t\Dn)^{2k}}{(2k)!} $$
+und die der Exponentialfunktion an der Stelle $x = t^2 \cn^2 \frac{1}{2}$
+$$ \exp\left(\frac{t^2c_n^2}{2}\right)= \sum_{k=0}^{\infty} \frac{(tc_n)^{2k}}{2^k k!}.$$\\
+
+Dann ergibt sich für alle $k$, mit der Ungleichung 
+$$ (2k)! \geq 2^kk! ,$$
+dass gilt
+$$ \frac{t^2\cn^2}{(2k)!} \leq \frac{t^2\cn^2}{2^kk!} .$$
+\\
+Also gilt auch $\cosh(t\cn) \leq \exp(t^2 \cn^2 / 2)$ und damit insgesamt
+$$ \E(e^{tD_n}|\F_{n-1})\le\exp(t^2 c_n^2/2).$$
+
 
 \item Für $n=0$ gilt die Aussage trivial durch die Konvention
 $$\sum_{i=1}^0 x_i=0$$
