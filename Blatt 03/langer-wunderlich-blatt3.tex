@@ -62,8 +62,10 @@ $$\E\left(\exp\left(t\sum_{i=1}^n D_i\right)\right)\le\exp\left(t^2\sum_{i=1}^n 
 \begin{enumerate}[$i)$,wide]
 \item TODO
 
-\item Für $n=1$ gilt die Aussage nach $ii)$.
-Sei nun $n\ge 1$ mit
+\item Für $n=0$ gilt die Aussage trivial durch die Konvention
+$$\sum_{i=1}^0 x_i=0$$
+und $\E(1)=1$, wodurch der Fall $n=1$ im Induktionsschritt mit bewiesen werden kann.\\
+Sei nun $n\ge 0$ mit
 \begin{equation}
 \E\left(\exp\left(t\sum_{i=1}^n D_i\right)\right)\le\exp\left(t^2\sum_{i=1}^n c_i^2/2\right).
 \end{equation}
@@ -83,8 +85,8 @@ Dann gilt
 &\le \exp(t^2c_{n+1}^2/2) \cdot \exp\left(t^2\sum_{i=1}^n c_i^2/2\right) \tag{$\ast\ast\ast$}\\
 &= \exp\left(t^2\sum_{i=1}^{n+1} c_i^2/2\right),
 \end{align*}
-wobei $(\ast)$ wegen $((x\mapsto e^{tx})\circ(\sum_{i=1}^n D_i))$ $\F_n$-messbar, $(\ast\ast)$ nach $i)$ und $(\ast\ast\ast)$ nach Annahme.
-Per Induktion folgt also die gewünschte Aussage für alle $n\ge 1$.
+wobei $(\ast)$ gilt wegen $((x\mapsto e^{tx})\circ(\sum_{i=1}^n D_i))$ $\F_n$-messbar, $(\ast\ast)$ nach $i)$ und $(\ast\ast\ast)$ nach Annahme.
+Per Induktion folgt also die gewünschte Aussage insbesondere für alle $n\ge 1$.
 
 \item TODO
 \end{enumerate}
