@@ -52,14 +52,42 @@ Anleitung:
 \item Betrachte $D_n:=M_n-M_{n-1}$ für $n\ge 1$. Benutze die Konvexität der Exponentialfunktion und die Taylorreihenentwicklung von $\cosh(\lambda c_n)$, um für $t>0$ zu zeigen:
 $$\E(e^{tD_n}|\F_{n-1})\le\exp(t^2 c_n^2/2).$$
 \item \label{11.ii} Verwende die Ungleichung aus $i)$, um für $t>0$ induktiv zu zeigen:
-$$\E\left(\exp\left(t\sum_{i=1}^n D_i\right)\right)\le\exp\left(t^2\sum_{i=1}^n c_n^2/2\right).$$
+$$\E\left(\exp\left(t\sum_{i=1}^n D_i\right)\right)\le\exp\left(t^2\sum_{i=1}^n c_i^2/2\right).$$
 \item Verwende die Markov-Ungleichung und die Abschätzung aus \ref{11.ii} für $t>0$ beliebig. Optimiere anschließend bezüglich $t$.
 \end{enumerate}
 
 \subsubsection*{Beweis}
 \einruecken
 
-trivial
+\begin{enumerate}[$i)$,wide]
+\item TODO
+
+\item Für $n=1$ gilt die Aussage nach $ii)$.
+Sei nun $n\ge 1$ mit
+\begin{equation}
+\E\left(\exp\left(t\sum_{i=1}^n D_i\right)\right)\le\exp\left(t^2\sum_{i=1}^n c_i^2/2\right).
+\end{equation}
+Dann gilt
+\begin{align*}
+\E\left(\exp\left(t\sum_{i=1}^{n+1} D_i\right)\right)
+&= \E\left(\exp\left(t\sum_{i=1}^n D_i\right)
+\cdot e^{tD_{n+1}}\right) \\
+&= \E\left(\E\left(\exp\left(t\sum_{i=1}^n D_i\right)
+\cdot e^{tD_{n+1}}\middle|\F_n\right)\right) \\
+&= \E\left(\exp\left(t\sum_{i=1}^n D_i\right)
+\cdot \E\left(e^{tD_{n+1}}\middle|\F_n\right)\right) \tag{$\ast$}\\
+&\le \E\left(\exp\left(t\sum_{i=1}^n D_i\right)
+\cdot \exp(t^2c_{n+1}^2/2)\right) \tag{$\ast\ast$}\\
+&= \exp(t^2c_{n+1}^2/2)
+\cdot \E\left(\exp\left(t\sum_{i=1}^n D_i\right)\right) \\
+&\le \exp(t^2c_{n+1}^2/2) \cdot \exp\left(t^2\sum_{i=1}^n c_i^2/2\right) \tag{$\ast\ast\ast$}\\
+&= \exp\left(t^2\sum_{i=1}^{n+1} c_i^2/2\right),
+\end{align*}
+wobei $(\ast)$ wegen $((x\mapsto e^{tx})\circ(\sum_{i=1}^n D_i))$ $\F_n$-messbar, $(\ast\ast)$ nach $i)$ und $(\ast\ast\ast)$ nach Annahme.
+Per Induktion folgt also die gewünschte Aussage für alle $n\ge 1$.
+
+\item TODO
+\end{enumerate}
 
 \ausruecken
 \subsection*{Aufgabe 12}
@@ -79,8 +107,6 @@ gegeben.
 \subsubsection*{Lösung}
 \einruecken
 
-%TODO Def X_0
-abc
 \begin{enumerate}[$i)$,wide]
 \item Sei $\F:=\F^D$. Da $H_n=2^{n-1}\1_U$ mit $U=\bigcap_{k=1}^{n-1}D_k^{-1}(\{-1\})\in\F_{n-1}$, ist $H$ $\F$-vorhersagbar. Sei nun der stochastische Prozess $X=(X_n)_{n\ge 0}$ definiert durch $X_0:=0, X_n:=\sum_{k=1}^n D_k$. Dann ist $X_n$ $\F_n$-messbar als Summe $\F_n$-messbarer Abbildungen, also $X$ $\F$-adaptiert.
 Weiter gilt 
@@ -99,7 +125,34 @@ Sei nun $1\le n<1$ mit $\E(G_n)=0$. Dann gilt
 $$\E(G_{n+1})=\E(\E(G_{n+1}|\F_{n}))=\E(G_n)=0,$$
 wobei der vorletzte Schritt daraus folgt, dass $G$ nach $i)$ ein Martingal ist. 
 
-\item TODO
+\item Seien $V_n:=\{D_1=\dots=D_n=-1\}$ und $V:=\bigcap_{n\ge 1}V_n$.
+Dann gilt
+\begin{align*}
+P(V_n) &= P(\bigcap_{k=1}^n D_k^{-1}(\{-1\})) \\
+&= \prod_{k=1}^n P(D_k^{-1} (\{-1\})) \tag{$\ast$} \\
+&= \prod_{k=1}^n \frac{1}{2} \\
+&= 2^{-n},
+\end{align*}
+wobei ($\ast$) wegen $(D_n)_{n\ge 1}$ i.i.d.
+Somit folgt aus $V_n\searrow V$ und der Stetigkeit von oben
+$$P(V)=\lim_{n\rightarrow \infty} P(V_n)=0.$$
+Seien nun
+$$W_n:=\{D_n\notin\{-1,1\}\},\quad W:=\bigcup_{n\ge 1}W_n,\quad N:=V\cup W.$$
+Dann $P(W_n)=0$ nach Aufgabenstellung, also P(N) Nullmenge wegen
+$$P(N)\le P(V)+P(W)\le P(V)+\sum_{n\ge 1}P(W_n)=0.$$
+Für $\om\in\Om\setminus N=\bigcup_{n\ge 1}\Om\setminus (V_n\cup W)$ existiert $n\ge 1$ minimal, sodass $\om\in\Om\setminus V_n$. Per Definition gilt also $D_k(\om)=-1$ für $k<n$ und $D_n(\om)=1$. Somit
+$$H_n(\om)=
+\begin{cases}
+2^{k-1} & k>n \\
+0 & k>n,
+\end{cases}$$
+also für $m\ge n$:
+\begin{align*}
+G_m(\om) &= \sum_{k=1}^m{H_k(\om)\cdot D_k(\om)} \\
+&= \left(\sum_{k=1}^{n-1} -2^{k-1}\right)+2^{n-1} \\
+&= -(2^{n-1}-1)+2^{n-1} = 1,
+\end{align*}
+und somit $\lim_{n\rightarrow\infty} G_n(\om)=1$, wie gewünscht.
 \end{enumerate}
 \ausruecken
 
