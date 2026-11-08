@@ -1,0 +1,99 @@
+\documentclass[12pt]{scrartcl}
+
+
+%Matthis Vorlage
+\usepackage{../mathe_definition}
+%wird in Matthis Volage auch gemacht aber das rafft mein texstudio nicht und highlighted Dinge falsch
+\usepackage{amsmath} 
+
+%Ausgelagerter Code fürs schöne seitenlayout
+\date{\today}
+\newcommand{\Blattnummer}{%
+	4%
+}
+
+\input{../seitendesign.tex}
+
+%Abkürzungen
+\input{../abkürzungen.tex}
+
+\begin{document}
+	
+\subsection*{Aufgabe 12}
+\subsubsection*{Beispiel 2.2.8}
+
+Seien $Y=(Y_i)_{i\ge 1}$ unabhängige, $\R$-wertige Zufallsvariablen auf $(\Om,\A,P)$ mit $Y_i\in\scriptL_{2}(P)$ und $\E Y_i=0$ für alle $i\ge 1$. Wir setzen $\F_0:=\{\emptyset,\Om\}$ und $\F_n:=\sigma(Y_1,\dots,Y_n)$ für $n\ge 1$. Dann definiert
+$$X_n:=\sum_{i=1}^n Y_i,\qquad n\ge 0$$
+nach \textit{Beispiel 2.1.7} ein Martingal bezüglich der Filtration $\F:=(\F_n)_{n\ge 0}$.
+Ferner gilt $X_n\in \scriptL_2(P)$ für alle $n\ge 0$ und der quadratische Variationsprozess ist durch
+$$\left<X\right>_n=\sum_{i=1}^n \E Y_i^2,\qquad n\ge 0$$
+gegeben.
+
+\subsubsection*{Beweis}
+\einruecken
+
+trivial
+
+\ausruecken
+
+\subsubsection*{Beispiel 2.2.9}
+
+Seien $Y=(Y_i)_{i\ge 1}$ unabhängige, $\R$-wertige Zufallsvariablen auf $(\Om,\A,P)$ mit $Y_i \ge 0$, $Y_i\in\scriptL_{2}(P)$ und $\E Y_i=0$ für alle $i\ge 1$. Wir definieren $X_0:=1$, $\F_0:=\{\emptyset,\Om\}$ und
+\begin{align*}
+X_n &:= Y_1\cdot\dots\cdot Y_n \\
+\F_n &:= \sigma(Y_1,\dots,Y_n)
+\end{align*}
+für $n\ge 1$. Dann ist $X:=(X_n)_{n\ge 0}$ nach \textit{Beispiel 2.1.9} ein Martingal bezüglich der Filtration $\F=(\F_n)_{n\ge 0}$ und es gilt $X_n\in\scriptL_2(P)$ für alle $n\ge0$. Ferner ist der quadratische Variationsprozess durch
+$$\left<X\right>_n=\sum_{i=1}^n X_{i-1}^2\var Y_i,\qquad n\ge 0$$
+gegeben.
+
+\subsubsection*{Beweis}
+\einruecken
+
+trivial
+
+\ausruecken
+
+\subsection*{Aufgabe 13}
+
+Sei \WraumAnn, $\F=(\F_n){n\ge 0}$ eine Filtration, $(X_n)_{n\ge 0}$ ein $\F$-adaptierter Prozess und $a<b$. Definiere $\sigma_0:=0$ und, für $k\ge 1$,
+\begin{align*}
+\tau_k &:= \inf\{n\ge\sigma_{k-1}:X_n\le a\} \\
+\sigma_k &:= \inf\{n\ge\tau_k:X_n\ge b\}.
+\end{align*}
+Zeige, dass $\sigma_{k-1}$ und $\tau_k$ $\F$-Stoppzeiten sind, die $\tau_k\le\sigma_k\le\tau_{k+1}$ für alle $k\ge 1$ erfüllen.
+Wann sind diese Ungleichungen strikt?
+
+\subsubsection*{Beweis und Lösung}
+\einruecken
+
+trivial
+
+\ausruecken
+
+\subsection*{Aufgabe 14}
+
+Sei \WraumAnn, $\F=(\F_n)_{n\ge 0}$ eine Filtration und $B_n\in\F_n$ für alle $n\ge0$. Bestimme die quadratische Variation von dem Prozess gegeben durch
+$$X_n:=\sum_{i=1}^n \1_{B_i},\qquad n\ge 0.$$
+
+\subsubsection*{Lösung}
+\einruecken
+
+trivial
+
+\ausruecken
+
+\subsection*{Aufgabe 15}
+
+Sei $X:=\Xt$ ein \R-wertiger stochastischer Prozess auf $(\Om,\A,P)$, sodass $X_t\in\scriptL_2(P)$ für alle $t\in T$. Wir definieren die Kovarianz-Funktion $k:T\times T \rightarrow \R$ durch
+$$k(s,t):=\E((X_s-\E X_s)(X_t-\E X_t)),\qquad s,t\in T.$$
+Zeige, dass die quadratische Matrix $(k(t_i,t_j))_{i,j=1}^n$ symmetrisch und positiv semi-definit ist für alle $n\ge 1$ und $t_1,\dots,t_n\in T$. Was können wir über die entsprechenden Eigenwerte sagen?
+
+\subsubsection*{Beweis}
+\einruecken
+
+trivial
+
+\ausruecken
+	
+\end{document}
