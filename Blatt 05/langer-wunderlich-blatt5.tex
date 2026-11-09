@@ -1,0 +1,65 @@
+\documentclass[12pt]{scrartcl}
+
+%Matthis Vorlage
+\usepackage{../mathe_definition}
+%wird in Matthis Volage auch gemacht aber das rafft mein texstudio nicht und highlighted Dinge falsch
+\usepackage{amsmath}
+
+%Ausgelagerter Code fürs schöne seitenlayout
+\date{\today}
+\newcommand{\Blattnummer}{%
+	5%
+}
+
+\input{../seitendesign.tex}
+
+%Abkürzungen
+\input{../abkürzungen.tex}
+
+\begin{document}
+
+\subsection*{Aufgabe 16}
+
+Let $(\Om,\A,\textP)$ be some probability space, $\F$ be a filtration on it and $X$ be an $\R$-valued and $\F$-adapted process. Finally, let $\tau$ be an $\F$-stopping time. Show that $Y$ defined by
+$$Y(\om):=
+\begin{cases}
+Y_{\tau(\om)}(\om), & \text{if }\tau(\om)<\infty \\
+0, & \text{else} 
+\end{cases}$$
+is $\F_{\tau}$-measurable.
+
+\subsubsection*{Beweis}
+\einruecken
+
+trivial
+
+\ausruecken
+
+\subsection*{Aufgabe 17}
+
+Let $(\Om,\A,\textP)$ be some probability space, $\F$ be a filtration on it and $\sigma$ and $\tau$ be some $\F$-stopping times with $\sigma\le\tau$. For a fixed $A\in\F_{\sigma}$ show that
+$$\sigma\1_A+\tau\1_{\Om\setminus A}$$
+is also an $\F$-stopping time.
+
+\subsubsection*{Beweis}
+\einruecken
+
+trivial
+
+\ausruecken
+
+\subsection*{Aufgabe 18}
+
+Let $(Y_i)_{i\ge 1}$ be a sequence of i.i.d. random variables on some probability space $(\Om,\A,\textP)$ with $\textP(Y_1=1)=p$ and $\textP(Y_1=-1)=1-p$ for some $p\in (0,1)$ with $p\ne 1/2$.
+Define
+$$X_n:=\left(\frac{1-p}{p}\right)^{\sum_{i=1}^n Y_i},\qquad n\ge 0.$$
+Find a suitable filtration $\F$ such that $X:=(X_n)_{n\ge 0}$ is an $\F$-martingale. Use this to investigate the ``probabilities of winning for players 1 and 2'' in the sense of Section 2.4.2., where the case $p=1/2$ was considered.
+
+\subsubsection*{Beweis}
+\einruecken
+
+trivial
+
+\ausruecken
+	
+\end{document}
