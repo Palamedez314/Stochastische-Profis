@@ -32,13 +32,21 @@ gegeben.
 \subsubsection*{Beweis}
 \einruecken
 
-trivial
+Da $\scriptL_2(P)$ ein Vektorraum ist, gilt $X_n=\sum_{i=1}^n Y_i\in\scriptL_2(P)$ für alle $n\ge 0$. Nach MWT-Vorlesung ist wegen $Y_i$ auch $Y_i^2$ unabhängig von $\F_{i-1}=\sigma(Y_1,\dots,Y_i-1)$, sodass
+$$\E(Y_i|\F_{i-1})=\E(Y_i)$$
+gilt. Nun erhalten wir aus \textit{Korollar 2.2.7 iv)} für $n\ge 0$:
+\begin{align*}
+\left<X\right>_n
+&= \sum_{i=1}^n\E((X_i-X_{i-1})^2|\F_{i-1}) \\
+&= \sum_{i=1}^n\E(Y_i^2|\F_{i-1}) \\
+&= \sum_{i=1}^n\E Y_i^2.
+\end{align*}
 
 \ausruecken
 
 \subsubsection*{Beispiel 2.2.9}
 
-Seien $Y=(Y_i)_{i\ge 1}$ unabhängige, $\R$-wertige Zufallsvariablen auf $(\Om,\A,P)$ mit $Y_i \ge 0$, $Y_i\in\scriptL_{2}(P)$ und $\E Y_i=0$ für alle $i\ge 1$. Wir definieren $X_0:=1$, $\F_0:=\{\emptyset,\Om\}$ und
+Seien $Y=(Y_i)_{i\ge 1}$ unabhängige, $\R$-wertige Zufallsvariablen auf $(\Om,\A,P)$ mit $Y_i \ge 0$, $Y_i\in\scriptL_{2}(P)$ und $\E Y_i=1$ für alle $i\ge 1$. Wir definieren $X_0:=1$, $\F_0:=\{\emptyset,\Om\}$ und
 \begin{align*}
 X_n &:= Y_1\cdot\dots\cdot Y_n \\
 \F_n &:= \sigma(Y_1,\dots,Y_n)
@@ -50,7 +58,21 @@ gegeben.
 \subsubsection*{Beweis}
 \einruecken
 
-trivial
+Da $(Y_i)_{i\ge 1}$ unabhängig, sind auch $(|Y_i|^2)_{i\ge 1}$ unabhängig mit $|Y_i|^2\in\scriptL_1$.
+Nach \textit{Satz 5.4.} aus MWT ist somit $|X_n|^2=\prod_{i=1}^n |Y_i|^2$ auch P-integrierbar, also $X_n\in\scriptL_2$.
+Ferner gilt wie in letztem Beispiel auch $(Y_i-1)^2_{i\ge 1}$ unabhängig von $\F_{i-1}$, sodass
+$$\E((Y_i-1)^2|\F_{i-1})=\E(Y_i-1)^2=\E(Y_i-\E Y_i)^2=\var Y_i$$
+
+Nach \textit{Korollar 2.2.7 iv)} erhalten wir somit für $n\ge 0$:
+\begin{align*}
+\left<X\right>_n
+&= \sum_{i=1}^n \E((X_i-X_{i-1})^2|\F_{i-1}) \\%,\qquad n\ge 0 \\
+&= \sum_{i=1}^n \E((X_{i-1}Y_i - X_{i-1})^2|\F_{i-1}) \\
+&= \sum_{i=1}^n \E(X_{i-1}^2\cdot(Y_i-1)^2|\F_{i-1}) \\
+&= \sum_{i=1}^n X_{i-1}^2\cdot\E((Y_i-1)^2|\F_{i-1}) \tag{$\ast$} \\
+&= \sum_{i=1}^n X_{i-1}^2\var Y_i,
+\end{align*}
+wobei $(\ast)$ wegen der $\F$-Adaptiertheit von $X$ gilt.
 
 \ausruecken
 
