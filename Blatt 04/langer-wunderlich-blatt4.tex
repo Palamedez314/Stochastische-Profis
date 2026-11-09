@@ -78,7 +78,7 @@ wobei $(\ast)$ wegen der $\F$-Adaptiertheit von $X$ gilt.
 
 \subsection*{Aufgabe 13}
 
-Sei \WraumAnn, $\F=(\F_n){n\ge 0}$ eine Filtration, $(X_n)_{n\ge 0}$ ein $\F$-adaptierter Prozess und $a<b$. Definiere $\sigma_0:=0$ und, für $k\ge 1$,
+Sei \WraumAnn, $\F=(\F_n)_{n\ge 0}$ eine Filtration, $(X_n)_{n\ge 0}$ ein $\F$-adaptierter Prozess und $a<b$. Definiere $\sigma_0:=0$ und, für $k\ge 1$,
 \begin{align*}
 \tau_k &:= \inf\{n\ge\sigma_{k-1}:X_n\le a\} \\
 \sigma_k &:= \inf\{n\ge\tau_k:X_n\ge b\}.
@@ -89,7 +89,30 @@ Wann sind diese Ungleichungen strikt?
 \subsubsection*{Beweis und Lösung}
 \einruecken
 
-trivial
+Wir beweisen die Stoppzeit-Eigenschaft von $\sigma_{k-1}$ und $\tau_k$ für alle $k\ge 1$ durch vollständige Induktion: Für $k=1$ ist die Aussage für $\sigma_0$ trivial und $\tau_1$ ist eine erste Eintrittszeit.
+
+Sei nun $k\ge 1$ mit $\sigma_{k-1}$ und $\tau_{k}$ $\F$-Stoppzeiten. Für $\om\in\Om$ mit $$M_{k,\om}:=\{n\ge \tau_{k-1}(\om):X_n(\om)\le b\}$$
+nichtleer hat $M_{k,\om}$ nach Eigenschaften der natürlichen Zahlen ein Minimum. Für $n\ge 0$ und alle $\om\in\Om$ gilt also
+\begin{align*}
+\sigma_k(\om)\le n
+&\Leftrightarrow \inf M_{k,\om}\le n \\
+&\Leftrightarrow \exists m\le n: m\ge\tau_{k-1}(\om)\land X_m(\om)\ge b \\
+&\Leftrightarrow \exists m \le n: \om\in\{\tau_{k-1}\le m\}\cap X_m^{-1}((b,\infty))
+\end{align*}
+und somit 
+$$\{\om\in\Om:\sigma_k\le n\} = \bigcup_{m=0}^n\{\tau_{k-1}\le m\}\cap X_m^{-1}((b,\infty)) \in \F_n,$$
+da $\tau_{k-1}$ Stoppzeit und $X$ adaptiert.
+Damit ist $\sigma_k$ eine $\F$-Stoppzeit und die Eigenschaft für $\tau_{k+1}$ lässt sich analog zeigen.
+
+Die Ungleichungen
+$$\tau_k\le\sigma_k\le\tau_{k+1},\qquad k\ge 1$$
+gelten direkt per Definition und Fallunterscheidung über $\bar{\N}=\N\cup\{\infty\}$.
+%TODO: genauer?
+Ferner gilt für $k\ge1$ und $\om\in\Om$ mit $\tau_k(\om)<\infty$, dass
+$$X_{\tau_k(\om)}\le a < b,$$
+also $\tau_k(\om)\notin M_{k.\om}$ und somit $\tau_k(\om)<\sigma_k(\om)$.
+Für $\tau_k(\om)=\infty$ gilt stattdessen $\tau_k(\om)=\sigma_k(\om)$.
+Somit erhalten wir insgesamt $\tau_k<\sigma_k$ genau dann wenn $\{\tau_k<\infty\}=\Om$. Analog gilt die andere Ungleichung strikt g.d.w. $\{\sigma_k<\infty\}=\Om$.
 
 \ausruecken
 
