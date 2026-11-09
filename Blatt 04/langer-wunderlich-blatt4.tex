@@ -92,7 +92,7 @@ Wann sind diese Ungleichungen strikt?
 Wir beweisen die Stoppzeit-Eigenschaft von $\sigma_{k-1}$ und $\tau_k$ für alle $k\ge 1$ durch vollständige Induktion: Für $k=1$ ist die Aussage für $\sigma_0$ trivial und $\tau_1$ ist eine erste Eintrittszeit.
 
 Sei nun $k\ge 1$ mit $\sigma_{k-1}$ und $\tau_{k}$ $\F$-Stoppzeiten. Für $\om\in\Om$ mit $$M_{k,\om}:=\{n\ge \tau_{k-1}(\om):X_n(\om)\le b\}$$
-nichtleer hat $M_{k,\om}$ nach Eigenschaften der natürlichen Zahlen ein Minimum. Für $n\ge 0$ und alle $\om\in\Om$ gilt also
+nichtleer hat $M_{k,\om}$ nach Eigenschaften der natürlichen Zahlen ein Minimum. Für $\om\in\Om$ und $n\ge 0$ gilt also
 \begin{align*}
 \sigma_k(\om)\le n
 &\Leftrightarrow \inf M_{k,\om}\le n \\
@@ -124,20 +124,16 @@ $$X_n:=\sum_{i=1}^n \1_{B_i},\qquad n\ge 0.$$
 \subsubsection*{Lösung}
 \einruecken
 
-Zur Einfachheit berechnen wir kurz zuerst die Differenz zweier aufeinander Folgenden $X_i$. Diese ist durch 
-$$ D_i := X_i - X_{i-1} = \sum_{k=1}^{i}\mathbf{1}_{B_k} - \sum_{k=1}^{i-1}\mathbf{1}_{B_k} = \mathbf{1}_{B_i} $$
-gegeben. Damit können wir leicht die quadratische Variation $ \langle X \rangle_n $ durch
-
-
-\begin{align}
-	\langle X \rangle_n &= \sum_{n}^{i=1}\E({D_i}^2|\F_{i-1}) 						\\
-						&= \sum_{n}^{i=1} \E(\mathbf{1_{B_i}}^2|\F_{i-1})			\\
-						&= \sum_{n}^{i=1} \E(\mathbf{1_{B_i}}|\F_{i-1})				\\
-						&= \sum_{n}^{i=1} P(B_i | \F_{i-1})
-\end{align} 
-
-
-berechnen. Wobei wir ausgenutzt haben, dass ${1_{B_i}}^2 = {1_{B_i}}$ gilt und dass für Indikatorfunktionen der bedingte Erwartungswert mit der bedingten Wahrscheinlichkeit übereinstimmt.
+Zur Einfachheit berechnen wir kurz zuerst die Differenz zweier aufeinander folgenden Zufallsvariablen $X_i$. Diese ist durch 
+$$ D_i := X_i - X_{i-1} = \sum_{k=1}^{i}\1_{B_k} - \sum_{k=1}^{i-1}\1_{B_k} = \1_{B_i} $$
+gegeben. Damit können wir wegen $|\1_{B_i}|^2=\1_{B_i}\in\scriptL_1(P)$ leicht die quadratische Variation $ \langle X \rangle_n $ durch
+\begin{align*}
+	\langle X \rangle_n &= \sum_{i=1}^n \E({D_i}^2|\F_{i-1}) 						\\
+						&= \sum_{i=1}^n \E({\1_{B_i}}^2|\F_{i-1})			\\
+						&= \sum_{i=1}^n \E(\1_{B_i}|\F_{i-1})				\\
+						&= \sum_{i=1}^n P(B_i | \F_{i-1})
+\end{align*} 
+berechnen, wobei wir genutzt haben, dass ${\1_{B_i}}^2 = {\1_{B_i}}$ gilt und dass für Indikatorfunktionen der bedingte Erwartungswert mit der bedingten Wahrscheinlichkeit übereinstimmt.
 
 \ausruecken
 
@@ -152,16 +148,16 @@ Zeige, dass die quadratische Matrix $(k(t_i,t_j))_{i,j=1}^n$ symmetrisch und pos
 
 Die Symmetrie ist leicht ersichtlich, da 
 $$k(s,t) = \E((X_s -\E(X_s))(X_t -\E(X_t))) = \E((X_t -\E(X_t))(X_s -\E(X_s))) = k(t,s)$$ 
-gilt. Für die postive Definitheit sei $n \geq 1 $ und $a \in \mathbb{R}^n $ und $K$ die zu betrachtende Matrix. Dann gilt, dass
+gilt. Für die postive Definitheit sei $n \geq 1 $, $a \in \mathbb{R}^n $ und $K$ die zu betrachtende Matrix. Dann gilt, dass
 
-\begin{align}
-	a^T K a &= \sum_{n}^{i=1} \sum_{n}^{j=1} a_i a_j \E((X_{a_i} -\E(X_{a_i}))(X_{a_j} - \E(X_{a_j})))			\\
-			&= \E \sum_{n}^{i=1} \sum_{n}^{j=1} a_i a_j (X_{a_i} -\E(X_{a_i}))(X_{a_j} - \E(X_{a_j}))			\\
-			&= \E [\sum_{n}^{i=1} \sum_{n}^{j=1} a_i (X_{a_i} - \E(X_{a_i})) a_j(X_{a_j} - \E(X_{a_j}))]		\\
-			&= \E [(\sum_{n}^{i=1}a_i (X_{a_i} - \E(X_{a_i}))) (\sum_{n}^{j=1} a_j(X_{a_j} - \E(X_{a_j})) )] 	\\
-			&= \E [\sum_{n}^{i=1}a_i (X_{a_i} - \E(X_{a_i}))]^2 \geq 0
-\end{align}
-ist. Also ist $K$ positiv definit. Durch geschicktes Zuhören in der Vorlesung und dem Lesen des Wikipedia Eintrags zu positiver Definitheit weiß 
+\begin{align*}
+	a^T K a &= \sum_{i=1}^n \sum_{j=1}^n a_i a_j \E((X_{a_i} -\E(X_{a_i}))(X_{a_j} - \E(X_{a_j})))			\\
+			&= \E \sum_{i=1}^n \sum_{j=1}^n a_i a_j (X_{a_i} -\E(X_{a_i}))(X_{a_j} - \E(X_{a_j})) \tag{$\ast$}			\\
+			&= \E [\sum_{i=1}^n \sum_{j=1}^n a_i (X_{a_i} - \E(X_{a_i})) a_j(X_{a_j} - \E(X_{a_j}))]		\\
+			&= \E [(\sum_{i=1}^na_i (X_{a_i} - \E(X_{a_i}))) (\sum_{j=1}^n a_j(X_{a_j} - \E(X_{a_j})) )] 	\\
+			&= \E [\sum_{i=1}^na_i (X_{a_i} - \E(X_{a_i}))]^2 \geq 0
+\end{align*}
+ist, wobei $(\ast)$ wegen der Linearität des Erwartungswerts gilt. Also ist $K$ positiv definit. Durch geschicktes Zuhören in der Vorlesung und dem Lesen des Wikipedia Eintrags zu positiver Definitheit weiß 
 man dann über alle Eigenwerte $\lambda$ der symmetrischen Matrix $K$, dass $\lambda \geq 0$ gilt.
 \ausruecken
 	
