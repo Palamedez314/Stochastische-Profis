@@ -70,10 +70,62 @@ Define
 $$X_n:=\left(\frac{1-p}{p}\right)^{\sum_{i=1}^n Y_i},\qquad n\ge 0.$$
 Find a suitable filtration $\F$ such that $X:=(X_n)_{n\ge 0}$ is an $\F$-martingale. Use this to investigate the ``probabilities of winning for players 1 and 2'' in the sense of Section 2.4.2., where the case $p=1/2$ was considered.
 
-\subsubsection*{Proof}
+\subsubsection*{Solution}
 \einruecken
 
-trivial
+Consider the natural filtration $\F = \F^{Y}$. For $n\ge 0$, we know that $\sum_{i=1}^n Y_i$ is $\F_n$-measurable from the lecture. Because
+$$f:x\mapsto \left(\frac{1-p}{p}\right)^x=e^{\ln\left(\frac{1-p}{p}\right)\cdot x}$$
+is continuous, we get the $\F_n$-measurability of $X_n = f\circ (\sum_{i=0}^n Y_i)$.
+Again, because f is continuous, we know that $\left(\frac{1-p}{p}\right)^{Y_n}$ is independent of $\F_{n-1}=\sigma(Y_1,\dots,Y_{n-1})$, which yields
+\begin{align*}
+\E\left(\left(\frac{1-p}{p}\right)^{Y_n}\middle|\F_{n-1}\right)
+&= \E\left(\frac{1-p}{p}\right)^{Y_n} \\
+&= p\cdot\frac{1-p}{p}+(1-p)\cdot\frac{p}{1-p} \\
+&= 1-p+p=1.
+\end{align*}
+Hence, by the $\F_n$-measurability of $X_{n-1}$, we get 
+\begin{align*}
+\E(X_n|\F_{n-1})
+&= \E\left(X_{n-1}\cdot\left(\frac{1-p}{p}\right)^{Y_n}\middle|\F_{n-1}\right) \\
+&= X_{n-1}\cdot\E\left(\left(\frac{1-p}{p}\right)^{Y_n}\middle|\F_{n-1}\right) \\
+&= X_{n-1},
+\end{align*}
+so $X$ is an $\F$-martingale.
+
+Now consider $A,B\in\N$. For
+\begin{align*}
+\tau_A &:= \inf\{n\ge 0: X_n=A\} \\
+\tau_B &:= \inf\{n\ge 0: X_n=-B\}
+\end{align*}
+consider the combined stopping time $\tau_{A,B}:=\tau_A\land\tau_B$. We are interested in the probablity of $V_1:=\{\tau_{A,B}=\tau_A\}$.
+Analogous to the proof in Section 2.4.2 of the lecture, we get
+\begin{align*}
+P(\{\tau_{A,B}=\infty\})
+=\lim_{n\rightarrow \infty}P(\{\tau_{A,B}>n\cdot (A+B)\})
+\le\lim_{n\rightarrow \infty}(1-p^{A+B})^n.
+\end{align*}
+
+With the notations $\tau=\tau_{A,B}, X_{\infty}=0$ and by the pointwise limit $\tau\land n \rightarrow \tau$, we have the almost sure convergence
+$$X_{\tau\land n}\rightarrow X_{\tau}.$$
+By the optional stopping theorem we also know
+$$\E X_{\tau\land n}=\E X_0 = 1,$$
+so the dominated convergence theorem together with $|X_{\tau\land n}|\le A+B$ yields $\E X_{\tau}=1$.
+Considering
+$$X_{\tau}(\om)=\begin{cases}
+	a := \left(\frac{1-p}{p}\right)^A & \text{if } \tau_{A,B}(\om)=\tau_A(\om) \\
+	b := \left(\frac{1-p}{p}\right)^{-B} & \text{if } \tau_{A,B}(\om)=\tau_B(\om) \\
+	0 & \text{if } \tau_{A,B}(\om)=\infty
+\end{cases}$$
+and using $P(\tau_{A,B}<\infty)=1$ again, we now get
+\begin{align*}
+1 = \E X_\tau
+&= a\cdot P(\{\tau_{A,B}=\tau_B\}) + b\cdot P(\{\tau_{A,B}=\tau_B\}) \\
+&= a\cdot P(W_1)+ b\cdot (1-P(V_1)) \\
+&= (a-b)\cdot P(V_1) + b,
+\end{align*}
+which finally yields
+$$P(V_1)=\frac{1-b}{a-b}=\frac{1-\left(\frac{1-p}{p}\right)^{-B}}
+{\left(\frac{1-p}{p}\right)^A - \left(\frac{1-p}{p}\right)^{-B}}.$$
 
 \ausruecken
 	
