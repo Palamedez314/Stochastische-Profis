@@ -18,44 +18,59 @@
 
 \begin{document}
 
-\subsection*{Aufgabe 16}
+\subsection*{Exercise 16}
 
 Let $(\Om,\A,\textP)$ be some probability space, $\F$ be a filtration on it and $X$ be an $\R$-valued and $\F$-adapted process. Finally, let $\tau$ be an $\F$-stopping time. Show that $Y$ defined by
 $$Y(\om):=
 \begin{cases}
-Y_{\tau(\om)}(\om), & \text{if }\tau(\om)<\infty \\
+X_{\tau(\om)}(\om), & \text{if }\tau(\om)<\infty \\
 0, & \text{else} 
 \end{cases}$$
 is $\F_{\tau}$-measurable.
 
-\subsubsection*{Beweis}
+\subsubsection*{Proof}
 \einruecken
 
-trivial
+We recall from the lecture that $X_{\tau}$ is $\F_{\tau}$-measurable. Therefore, for $c\in \R$
+$$X_{\tau}^{-1}((-\infty,c])\in \F_{\tau},$$
+so for $c<0$ we get
+$$Y^{-1}((-\infty,c])=X_{\tau}^{-1}((-\infty,c])\in \F_{\tau}.$$
+Because $\{\tau=\infty\}\cap\{\tau\le n\}=\emptyset\in\F_n$ for all $n\ge 0$, we get by definition $\{\tau=\infty\}\in\F_{\tau}$, so
+$$Y^{-1}((-\infty,c])=\{\tau=\infty\}\cup X_{\tau}^{-1}((-\infty,c])\in \F_{\tau}.$$
+Together with $\B(\R)=\sigma((-\infty,c]:c\in \R)$, this now yields the $\F_{\tau}$-measurability of Y.
 
 \ausruecken
 
-\subsection*{Aufgabe 17}
+\subsection*{Exercise 17}
 
 Let $(\Om,\A,\textP)$ be some probability space, $\F$ be a filtration on it and $\sigma$ and $\tau$ be some $\F$-stopping times with $\sigma\le\tau$. For a fixed $A\in\F_{\sigma}$ show that
 $$\sigma\1_A+\tau\1_{\Om\setminus A}$$
 is also an $\F$-stopping time.
 
-\subsubsection*{Beweis}
+\subsubsection*{Proof}
 \einruecken
 
-trivial
+Because $\sigma\le\tau$, we get for $n\ge 0$:
+$$\{\tau\le n\}=\{\sigma\le n\}\cap\{\tau\le n\}.$$
+For $A\in\F_{\sigma}$ we also have $\Om\setminus A\in\F_{\sigma}$, so together with
+\begin{align*}
+\{\sigma\1_A + \tau\1_{\Om\setminus A}\le n\}
+&= (A\cap\{\sigma\le n\}) \cup (\Om\setminus A\cap\{\tau\le n\}) \\
+&= (A\cap\{\sigma\le n\}) \cup (\Om\setminus A\cap\{\sigma\le n\})\cap\{\tau\le n\},
+\end{align*}
+we get $\{\sigma\1_A + \tau\1_{\Om\setminus A}\le n\}\in\F_n$ by definition of $\F_{\sigma}$ and the $\F$-stopping time property of $\tau$.
+Hence,  $\sigma\1_A + \tau\1_{\Om\setminus A}$ is an $\F$-stopping time.
 
 \ausruecken
 
-\subsection*{Aufgabe 18}
+\subsection*{Exercise 18}
 
 Let $(Y_i)_{i\ge 1}$ be a sequence of i.i.d. random variables on some probability space $(\Om,\A,\textP)$ with $\textP(Y_1=1)=p$ and $\textP(Y_1=-1)=1-p$ for some $p\in (0,1)$ with $p\ne 1/2$.
 Define
 $$X_n:=\left(\frac{1-p}{p}\right)^{\sum_{i=1}^n Y_i},\qquad n\ge 0.$$
 Find a suitable filtration $\F$ such that $X:=(X_n)_{n\ge 0}$ is an $\F$-martingale. Use this to investigate the ``probabilities of winning for players 1 and 2'' in the sense of Section 2.4.2., where the case $p=1/2$ was considered.
 
-\subsubsection*{Beweis}
+\subsubsection*{Proof}
 \einruecken
 
 trivial
