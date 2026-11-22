@@ -5,6 +5,8 @@
 %wird in Matthis Volage auch gemacht aber das rafft mein texstudio nicht und highlighted Dinge falsch
 \usepackage{amsmath}
 
+\usepackage[shortlabels]{enumitem}
+
 %Ausgelagerter Code fürs schöne seitenlayout
 \date{\today}
 \newcommand{\Blattnummer}{%
@@ -21,9 +23,13 @@
 \subsection*{Excercise 19}
 \subsubsection*{Lemma 2.5.2}
 
-$ii)$ The map $U_{a,b}^N: \Om\rightarrow\overline{\N}_0$ defined by
-$$U_{a,b}^N(\om):=\sup\{k\in\N:\sigma_k(\om)\le N\},$$
-with $\sigma$ stopping time, is measurable.
+\begin{enumerate}[$i)$]
+	%Setzt Counter schon zu Beginn auf 1, damit danach das erste Item als ii) kommt.
+	\setcounter{enumi}{1}
+	\item For $\om\in\Om$ define 
+	$$U_{a,b}^N(\om):=\sup\{k\in\N:\sigma_k(\om)\le N\}$$
+	with $\sigma$ a stopping time. The resulting map $U_{a,b}^N: \Om\rightarrow\overline{\N}_0$ is measurable.
+\end{enumerate}
 
 \subsubsection*{Proof}
 \einruecken
@@ -64,7 +70,9 @@ trivial
 \subsection*{Excercise 21}
 \subsubsection*{Corollary 2.6.9}
 
-
+Let $(\Om,\A,P)$ be a probability space, $(X_n)_{n\ge 1}\subset\scriptL_1(P)$ and $X\in\scriptL_0(\A)$ with $X_n\rightarrow X$ in probability. If there exists $Y\in\scriptL_1(P)$ with $|X_n|\le Y$ for all $n\ge 1$, then
+$$||X_n-X||_{\scriptL_1(P)}\rightarrow 0.$$
+In particular, $\E X_n\rightarrow\E X$.
 
 \subsubsection*{Proof}
 \einruecken
@@ -75,9 +83,11 @@ trivial
 
 \subsubsection*{Corollary 2.6.10}
 
+Let $(\Om,\A,P)$ be a probability space, $(X_n)_{n\ge 1}\subset\scriptL_p(P)$ with $p\in(1,\infty]$ and $X\in\scriptL_0(\A)$ with $X_n\rightarrow X$ in probability. If
+$$\sup_{n\ge 1}||X_n||_{\scriptL_p(P)}<\infty,$$
+then $\E X_n\rightarrow\E X$.
 
-
-\subsubsection*{Beweis}
+\subsubsection*{Proof}
 \einruecken
 
 trivial
