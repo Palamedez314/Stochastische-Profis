@@ -28,7 +28,7 @@
 	\setcounter{enumi}{1}
 	\item For $\om\in\Om$ define 
 	$$U_{a,b}^N(\om):=\sup\{k\in\N:\sigma_k(\om)\le N\}$$
-	with $\sigma$ a stopping time. The resulting map $U_{a,b}^N: \Om\rightarrow\overline{\N}_0$ is measurable.
+	with $\sigma_k$ stopping times for all $k\ge0$ and $\sigma_k\le\sigma_l$ for $k\ge l$. The resulting map $U_{a,b}^N: \Om\rightarrow\overline{\N}_0$ is measurable.
 \end{enumerate}
 
 \subsubsection*{Proof}
@@ -48,16 +48,34 @@ then $\K$ ist uniformly integrable.
 \subsubsection*{Proof}
 \einruecken
 
-trivial
+By MWT lecture, we know that $N:=\{Y=\infty\}$ has measure $0$. For $X\in\K$ and $\om\in\Om\setminus N$, we have $$\om\in\{|X|<|X(\om)+1|\},\quad |X(\om)|\le Y(\om)<\infty.$$
+Therefore, $\{|X|<c\}\cap(\Om\setminus N)\nearrow\Om\setminus N$ and
+$$Y\1_{\{|X|<c\}\cap(\Om\setminus N)}\nearrow Y\1_{\Om\setminus N}.$$
+Because integrals don't change on nullsets, this yields
+$$\lim_{c\rightarrow\infty}\int_{|X|<c} Y\diff P
+= \lim_{c\rightarrow\infty}\int_{\Om} Y\1_{\{|X|<c\}\cap(\Om\setminus N)}\diff P
+= \int_{\Om}Y\1_{\Om\setminus N}\diff P
+= \int_{\Om}Y\diff P$$
+with the middle equality using Beppo-Levi. Further, the equality
+$$\int_{\Om}Y\diff P =\int_{|X|<c}Y\diff P +\int_{|X|\ge c}Y\diff P$$
+now yields
+$$\lim_{c\rightarrow\infty}\int_{|X|\ge c}Y\diff P =0$$
+by rearranging and using the definition of the limit. Therefore, we finally get
+\begin{align*}
+\lim_{c\rightarrow\infty}\sup_{X\in\K}\int_{|X|\le c}|X|\diff P
+&\
+\end{align*}
+
+....hmmm iwi funktioniert das actually gar nicht..
 
 \ausruecken
 
 \subsubsection*{Theorem 2.6.5}
 
 Let $(\Om,\A,P)$ be a probability space and $\K\subset\scriptL_0(\A)$ be nonempty. Further, let $\phi:[0,\infty)\rightarrow[0,\infty)$ be measurable with
-$$\lim_{t\rightarrow\infty}\frac{\phi(t)}{t}=\infty.$$
+$$\lim_{t\rightarrow\infty}\frac{\varphi(t)}{t}=\infty.$$
 If
-$$B:=\sup_{X\in\K}\E(|X|)<\infty,$$
+$$B:=\sup_{X\in\K}\E\varphi(|X|)<\infty,$$
 then $\K$ ist uniformly integrable.
 
 \subsubsection*{Proof}
@@ -77,7 +95,10 @@ In particular, $\E X_n\rightarrow\E X$.
 \subsubsection*{Proof}
 \einruecken
 
-trivial
+By \textit{Lemma 2.6.4}, proved in Exercise 20, $\{X_n:n\ge 1\}$ is uniformly integrable.
+\textit{Theorem 2.6.8.} now directly yields the convergence $X_n\rightarrow X$ in $\scriptL_1(P)$.
+The proposition $\E X_n\rightarrow\E X$ follows from
+$$|\E X_n-\E X|=|\E(X_n-X)|\le \E|X_n-X|=||X_n-X||_{\scriptL_1(P)}.$$
 
 \ausruecken
 
@@ -90,7 +111,7 @@ then $\E X_n\rightarrow\E X$.
 \subsubsection*{Proof}
 \einruecken
 
-trivial
+Using \textit{Theorem 2.6.5} from Exercise 20 with $\varphi(t):=t^p$, we get the uniformly integrability of $\{X_n:n\ge 1\}$. Again, we get $\scriptL_1(P)$-convergence and $\E X_n\rightarrow\E X$ by using \textit{Theorem 2.6.8}.
 
 \ausruecken
 	
