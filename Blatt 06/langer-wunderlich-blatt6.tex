@@ -21,20 +21,33 @@
 \begin{document}
 
 \subsection*{Excercise 19}
-\subsubsection*{Lemma 2.5.2}
+\subsubsection*{Lemma 2.5.1}
 
 \begin{enumerate}[$i)$]
 	%Setzt Counter schon zu Beginn auf 1, damit danach das erste Item als ii) kommt.
 	\setcounter{enumi}{1}
 	\item For $\om\in\Om$ define 
 	$$U_{a,b}^N(\om):=\sup\{k\in\N:\sigma_k(\om)\le N\}$$
-	with $\sigma_k$ stopping times for all $k\ge0$ and $\sigma_k\le\sigma_l$ for $k\ge l$. The resulting map $U_{a,b}^N: \Om\rightarrow\overline{\N}_0$ is measurable.
+	with $\sigma_k$ stopping times defined in \textit{(2.5.4)} of the lecture. The resulting map $U_{a,b}^N: \Om\rightarrow\overline{\N}_0$ is measurable.
 \end{enumerate}
 
 \subsubsection*{Proof}
 \einruecken
 
-trivial
+By definition, $\sigma_0=0$, so for $\om\in\Om$, the set $\{k\in\N:\sigma_k(\om)\le N\}$ is nonempty. Further, because for $k\in\N$ with $\sigma_k(\om)<\infty$,
+$$\sigma_{k+1}\ge\tau_{k+1}>\sigma_k(\om)$$
+by exercise sheet 4, we know that $\sigma_k(\om)> N$ for $k> N$.
+Therefore,
+$$\{U_{a,b}^N=\infty\}=\emptyset\in\A$$
+and for $n\in\N$,
+\begin{align*}
+\{U_{a,b}^N=n\}
+&= \{\om\in\Om:\sigma_n(\om)\le N\land\sigma_{n+1}>N\} \\
+&= \{\sigma_n\le N\}\cap(\Om\setminus\{\sigma_{n+1}\le N\}) \in \A
+\end{align*}
+because $\{\sigma_n\le N\}\in\F_n\subset\A$ and $\{\sigma_{n+1}\le N\}\in\F_{n+1}\subset\A$.
+This yields the measurability of $U_{a,b}^N$ as wanted.
+ 
 
 \ausruecken
 
@@ -48,25 +61,46 @@ then $\K$ ist uniformly integrable.
 \subsubsection*{Proof}
 \einruecken
 
-By MWT lecture, we know that $N:=\{Y=\infty\}$ has measure $0$. For $X\in\K$ and $\om\in\Om\setminus N$, we have $$\om\in\{|X|<|X(\om)+1|\},\quad |X(\om)|\le Y(\om)<\infty.$$
-Therefore, $\{|X|<c\}\cap(\Om\setminus N)\nearrow\Om\setminus N$ and
-$$Y\1_{\{|X|<c\}\cap(\Om\setminus N)}\nearrow Y\1_{\Om\setminus N}.$$
+For $X\in\K$ and $c>0$, $|X|\le Y$ yields
+$$\{|X|\ge c\}\subset\{Y\ge c\}.$$
+Therefore, we have
+$$\int_{|X|\ge c}|X|\diff P \le\int_{Y\ge c}|X|\diff P \le\int_{Y\ge c}Y\diff P.$$
+By MWT lecture, we know that $N:=\{Y=\infty\}$ has measure $0$. For $\om\in\Om\setminus N$, we have 
+$$\om\in\{Y<Y(\om)+1\},\quad Y(\om)<\infty.$$
+Therefore, $\{Y<c\}\cap(\Om\setminus N)\nearrow\Om\setminus N$ and
+$$Y\1_{\{Y<c\}\cap(\Om\setminus N)}\nearrow Y\1_{\Om\setminus N}.$$
 Because integrals don't change on nullsets, this yields
-$$\lim_{c\rightarrow\infty}\int_{|X|<c} Y\diff P
-= \lim_{c\rightarrow\infty}\int_{\Om} Y\1_{\{|X|<c\}\cap(\Om\setminus N)}\diff P
+$$\lim_{c\rightarrow\infty}\int_{Y<c} Y\diff P
+= \lim_{c\rightarrow\infty}\int_{\Om} Y\1_{\{Y<c\}\cap(\Om\setminus N)}\diff P
 = \int_{\Om}Y\1_{\Om\setminus N}\diff P
 = \int_{\Om}Y\diff P$$
 with the middle equality using Beppo-Levi. Further, the equality
-$$\int_{\Om}Y\diff P =\int_{|X|<c}Y\diff P +\int_{|X|\ge c}Y\diff P$$
+$$\int_{\Om}Y\diff P =\int_{Y<c}Y\diff P +\int_{Y\ge c}Y\diff P$$
 now yields
-$$\lim_{c\rightarrow\infty}\int_{|X|\ge c}Y\diff P =0$$
-by rearranging and using the definition of the limit. Therefore, we finally get
-\begin{align*}
-\lim_{c\rightarrow\infty}\sup_{X\in\K}\int_{|X|\le c}|X|\diff P
-&\
-\end{align*}
+$$\lim_{c\rightarrow\infty}\int_{Y\ge c}Y\diff P =0,$$
+so we finally get
+$$\lim_{c\rightarrow\infty}\sup_{X\in\K}\int_{|X|\ge c}|X|\diff P
+\le \lim_{c\rightarrow\infty}\int_{Y\ge c}Y\diff P = 0.$$
 
-....hmmm iwi funktioniert das actually gar nicht..
+%By MWT lecture, we know that $N:=\{Y=\infty\}$ has measure $0$. For $X\in\K$ and $\om\in\Om\setminus N$, we have $$\om\in\{|X|<|X(\om)+1|\},\quad |X(\om)|\le Y(\om)<\infty.$$
+%Therefore, $\{|X|<c\}\cap(\Om\setminus N)\nearrow\Om\setminus N$ and
+%$$Y\1_{\{|X|<c\}\cap(\Om\setminus N)}\nearrow Y\1_{\Om\setminus N}.$$
+%Because integrals don't change on nullsets, this yields
+%$$\lim_{c\rightarrow\infty}\int_{|X|<c} Y\diff P
+%= \lim_{c\rightarrow\infty}\int_{\Om} Y\1_{\{|X|<c\}\cap(\Om\setminus N)}\diff P
+%= \int_{\Om}Y\1_{\Om\setminus N}\diff P
+%= \int_{\Om}Y\diff P$$
+%with the middle equality using Beppo-Levi. Further, the equality
+%$$\int_{\Om}Y\diff P =\int_{|X|<c}Y\diff P +\int_{|X|\ge c}Y\diff P$$
+%now yields
+%$$\lim_{c\rightarrow\infty}\int_{|X|\ge c}Y\diff P =0$$
+%by rearranging and using the definition of the limit. Therefore, we finally get
+%\begin{align*}
+%\lim_{c\rightarrow\infty}\sup_{X\in\K}\int_{|X|\le c}|X|\diff P
+%&\
+%\end{align*}
+%
+%....hmmm iwi funktioniert das actually gar nicht..
 
 \ausruecken
 
