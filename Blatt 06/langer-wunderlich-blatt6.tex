@@ -116,17 +116,17 @@ then $\K$ ist uniformly integrable.
 \subsubsection*{Proof}
 \einruecken
 
-We see that for every $\epsilon > 0$ there must exist an $c \in \mathbb{N}$ so that for $t \geq c$,
-$$\frac{\varphi(t)}{t} \geq \frac{1}{\epsilon} \Rightarrow  t \leq \epsilon \varphi(t) $$
-must hold true. Looking now at the expectet value for $\lvert X \rvert$ over $\{\lvert X \rvert \geq c \}$ we get 
+We see that for every $\varepsilon > 0$ there must exist an $c \in \mathbb{N}$ so that for $t \geq c$,
+$$\frac{\varphi(t)}{t} \geq \frac{1}{\varepsilon} \Rightarrow  t \leq \varepsilon \varphi(t) $$
+must hold true. Looking now at the expected value for $\lvert X \rvert$ over $\{\lvert X \rvert \geq c \}$ we get 
 \begin{align*}
-	\E(\lvert X \rvert\1_{\lvert X \rvert \geq c}) & \leq \E(\epsilon \varphi(\lvert X \rvert) \1_{\lvert X \rvert \geq c})  \\
-	& \leq \epsilon \E(\epsilon \varphi(\lvert X \rvert)) \\
-	& \leq \epsilon B 
+	\E(\lvert X \rvert\1_{\lvert X \rvert \geq c}) & \leq \E(\varepsilon \varphi(\lvert X \rvert) \1_{\lvert X \rvert \geq c})  \\
+	& \leq \varepsilon \E(\varphi(\lvert X \rvert)) \\
+	& = \varepsilon B 
 \end{align*}
-for all $X \in K$. Therefore
-$$ \sup_{X\in\K}\E(\lvert X \rvert\1_{\lvert X \rvert \geq c}) \leq \epsilon B $$
-must also hold. Because we can choose an arbitrary samll $\epsilon$ and $B < \infty$ we get that
+for all $X \in K$ with $B:=\E\varphi(|X|)<\infty$. Therefore
+$$ \sup_{X\in\K}\E(\lvert X \rvert\1_{\lvert X \rvert \geq c}) \leq \varepsilon B $$
+must also hold. Because we can choose an arbitrary small $\varepsilon$, we get that
 $$\lim_{c \rightarrow \infty}\sup_{X\in\K}\E(\lvert X \rvert\1_{\lvert X \rvert \geq c}) = 0.$$
 Which proves the statement.
 \ausruecken
